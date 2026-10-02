@@ -1,0 +1,1629 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>РИМ — агентство недвижимости: торги, купля-продажа, строительство</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.1.0/cyrillic-400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.1.0/cyrillic-600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/unbounded@5.1.0/cyrillic-800.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.1.0/cyrillic-400.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.1.0/cyrillic-500.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.1.0/cyrillic-700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/manrope@5.1.0/cyrillic-800.css">
+<style>
+:root{
+  --teal:#16a9af;
+  --teal-dark:#0d7c81;
+  --teal-deep:#0a5d61;
+  --teal-light:#8adfe2;
+  --ink:#04262a;
+  --ink-2:#08343a;
+  --paper:#f2f8f8;
+  --white:#ffffff;
+  --muted:#5c7679;
+  --line:#dceaea;
+  --gold:#f2b263;
+  --radius:20px;
+  --shadow:0 18px 45px -20px rgba(4,38,42,.35);
+  --shadow-lg:0 32px 70px -28px rgba(4,38,42,.45);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Manrope',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--white);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4,.display{font-family:'Unbounded',system-ui,sans-serif;line-height:1.15;font-weight:600;letter-spacing:-.02em}
+img,svg{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font-family:inherit;font-size:inherit}
+ul{list-style:none}
+.container{width:min(1240px,92%);margin:0 auto}
+section{position:relative}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s cubic-bezier(.2,.7,.3,1),transform .7s cubic-bezier(.2,.7,.3,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.d1{transition-delay:.08s}.reveal.d2{transition-delay:.16s}.reveal.d3{transition-delay:.24s}.reveal.d4{transition-delay:.32s}
+
+/* ---------- topbar ---------- */
+.topbar{background:var(--ink);color:#bfe4e6;font-size:13.5px;padding:9px 0;position:relative;z-index:60}
+.topbar .container{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.topbar-info{display:flex;gap:26px;flex-wrap:wrap}
+.topbar-info span{display:inline-flex;align-items:center;gap:7px}
+.topbar-info svg{width:15px;height:15px;flex:none;fill:var(--teal-light)}
+.topbar a:hover{color:#fff}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:80;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:.3s}
+header.scrolled{border-color:var(--line);box-shadow:0 10px 30px -22px rgba(4,38,42,.6)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{width:50px;height:48px;flex:none}
+.logo-text{display:flex;flex-direction:column;line-height:1}
+.logo-text b{font-family:'Unbounded';font-weight:800;font-size:25px;letter-spacing:.14em;color:var(--ink)}
+.logo-text small{font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--teal-dark);font-weight:700;margin-top:5px}
+.menu{display:flex;align-items:center;gap:6px}
+.menu a{padding:9px 14px;border-radius:10px;font-weight:600;font-size:14.5px;color:#1c4448;transition:.25s;position:relative}
+.menu a:hover{color:var(--teal-dark);background:rgba(22,169,175,.09)}
+.menu a.active{color:var(--teal-dark)}
+.header-cta{display:flex;align-items:center;gap:14px}
+.header-phone{font-weight:800;font-size:15.5px;color:var(--ink);white-space:nowrap}
+.header-phone:hover{color:var(--teal-dark)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:12px;font-weight:700;font-size:14.5px;border:none;cursor:pointer;transition:.28s;letter-spacing:.01em}
+.btn-primary{background:var(--teal);color:#fff;box-shadow:0 14px 28px -14px rgba(22,169,175,.9)}
+.btn-primary:hover{background:var(--teal-dark);transform:translateY(-2px);box-shadow:0 20px 34px -14px rgba(13,124,129,.85)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal-dark);background:rgba(22,169,175,.06)}
+.btn-light{background:#fff;color:var(--teal-deep)}
+.btn-light:hover{transform:translateY(-2px);box-shadow:0 18px 30px -16px rgba(0,0,0,.5)}
+.btn-outline-light{border:1.5px solid rgba(255,255,255,.45);color:#fff;background:rgba(255,255,255,.06)}
+.btn-outline-light:hover{background:#fff;color:var(--ink);border-color:#fff}
+.burger{display:none;width:46px;height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:5px}
+.burger i{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+.burger.open i:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger.open i:nth-child(2){opacity:0}
+.burger.open i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* ---------- hero ---------- */
+.hero{background:linear-gradient(160deg,#04262a 0%,#073a3f 48%,#0a5157 100%);color:#fff;overflow:hidden;padding:80px 0 0}
+.hero::before{content:"";position:absolute;inset:0;background:
+ radial-gradient(680px 420px at 82% 8%,rgba(22,169,175,.4),transparent 70%),
+ radial-gradient(520px 380px at 6% 78%,rgba(22,169,175,.22),transparent 70%);}
+.hero-grid-lines{position:absolute;inset:0;opacity:.16;background-image:linear-gradient(rgba(255,255,255,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.35) 1px,transparent 1px);background-size:74px 74px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.hero .container{position:relative;z-index:3}
+.hero-top{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-bottom:60px}
+.eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:99px;background:rgba(22,169,175,.16);border:1px solid rgba(138,223,226,.35);color:#b7eef0;font-size:12.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--teal-light);box-shadow:0 0 0 4px rgba(138,223,226,.22);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero h1{font-size:clamp(30px,4.2vw,56px);font-weight:800;margin:22px 0 20px}
+.hero h1 em{font-style:normal;color:var(--teal-light);position:relative}
+.hero-lead{font-size:17px;color:#cfe6e7;max-width:540px;margin-bottom:32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}
+.hero-stats{display:flex;gap:38px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.14);padding-top:26px}
+.hero-stats div b{font-family:'Unbounded';font-size:30px;font-weight:700;color:#fff;display:block}
+.hero-stats div span{font-size:13px;color:#9fc4c6}
+.hero-visual{position:relative}
+.hero-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);border-radius:24px;padding:20px;box-shadow:0 40px 80px -40px rgba(0,0,0,.8)}
+.float-badge{position:absolute;background:#fff;color:var(--ink);border-radius:16px;padding:13px 17px;display:flex;align-items:center;gap:11px;box-shadow:var(--shadow-lg);font-size:13px;font-weight:700}
+.float-badge small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.fb1{left:-18px;top:38px;animation:floaty 6s ease-in-out infinite}
+.fb2{right:-14px;bottom:74px;animation:floaty 7.5s ease-in-out infinite reverse}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.badge-ico{width:38px;height:38px;border-radius:11px;background:rgba(22,169,175,.14);display:grid;place-items:center;flex:none}
+.badge-ico svg{width:20px;height:20px;fill:var(--teal-dark)}
+
+/* search widget */
+.search-panel{background:#fff;border-radius:22px;padding:16px;box-shadow:var(--shadow-lg);margin-bottom:-58px;position:relative;z-index:5}
+.search-panel form{display:grid;grid-template-columns:1.2fr 1.2fr 1fr auto;gap:12px;align-items:end}
+.field label{display:block;font-size:11.5px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field select,.field input,.field textarea{width:100%;padding:14px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);color:var(--ink);font-weight:600;font-size:14.5px;transition:.25s;outline:none}
+.field select:focus,.field input:focus,.field textarea:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px rgba(22,169,175,.12)}
+.search-panel .btn{height:50px;padding:0 30px}
+
+/* ---------- section head ---------- */
+.sec{padding:100px 0}
+.sec-tight{padding:76px 0}
+.head{max-width:760px;margin-bottom:52px}
+.head.center{margin-left:auto;margin-right:auto;text-align:center}
+.head .eyebrow{background:rgba(22,169,175,.1);border-color:rgba(22,169,175,.25);color:var(--teal-deep)}
+.head h2{font-size:clamp(26px,3.3vw,42px);font-weight:700;margin:18px 0 14px}
+.head p{color:var(--muted);font-size:16.5px}
+
+/* ---------- services ---------- */
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.svc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;position:relative;overflow:hidden;transition:.35s}
+.svc::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--teal),var(--teal-light));transform:scaleX(0);transform-origin:left;transition:.45s}
+.svc:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.svc:hover::after{transform:scaleX(1)}
+.svc-num{position:absolute;right:22px;top:16px;font-family:'Unbounded';font-size:56px;font-weight:800;color:rgba(22,169,175,.1);line-height:1}
+.svc-ico{width:64px;height:64px;border-radius:18px;background:linear-gradient(145deg,#e6f7f8,#cdeef0);display:grid;place-items:center;margin-bottom:24px}
+.svc-ico svg{width:32px;height:32px;fill:var(--teal-dark)}
+.svc h3{font-size:21px;margin-bottom:12px}
+.svc p{color:var(--muted);font-size:15px;margin-bottom:20px}
+.svc ul li{position:relative;padding-left:24px;font-size:14.5px;color:#31565a;margin-bottom:9px}
+.svc ul li::before{content:"";position:absolute;left:0;top:9px;width:9px;height:9px;border-radius:3px;background:var(--teal)}
+.svc-link{display:inline-flex;align-items:center;gap:8px;margin-top:20px;font-weight:800;font-size:14px;color:var(--teal-dark)}
+.svc-link svg{width:16px;height:16px;fill:currentColor;transition:.3s}
+.svc-link:hover svg{transform:translateX(5px)}
+
+/* ---------- auction ---------- */
+.dark{background:linear-gradient(155deg,#04262a,#083b40 60%,#0b4b50);color:#fff}
+.dark .head h2,.dark h3{color:#fff}
+.dark .head p{color:#a9cbcd}
+.dark .eyebrow{background:rgba(22,169,175,.18);border-color:rgba(138,223,226,.3);color:#a9ecef}
+.auction-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.steps{counter-reset:s;display:grid;gap:16px}
+.step{display:grid;grid-template-columns:56px 1fr;gap:18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:20px;transition:.3s}
+.step:hover{background:rgba(22,169,175,.14);border-color:rgba(138,223,226,.4);transform:translateX(6px)}
+.step-n{width:56px;height:56px;border-radius:14px;background:var(--teal);display:grid;place-items:center;font-family:'Unbounded';font-weight:700;font-size:19px;color:#fff}
+.step h4{font-size:16.5px;margin-bottom:5px;font-weight:600}
+.step p{font-size:14px;color:#b3d1d3}
+.auction-side{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.13);border-radius:24px;padding:34px;position:sticky;top:110px}
+.auction-side .scene{border-radius:18px;overflow:hidden;margin-bottom:26px;border:1px solid rgba(255,255,255,.14)}
+.mini-list{display:grid;gap:14px;margin-bottom:28px}
+.mini-list li{display:flex;gap:12px;font-size:14.5px;color:#d3eaea;align-items:flex-start}
+.check{width:22px;height:22px;border-radius:7px;background:rgba(22,169,175,.25);display:grid;place-items:center;flex:none;margin-top:2px}
+.check svg{width:12px;height:12px;fill:var(--teal-light)}
+.price-tag{background:rgba(255,255,255,.06);border:1px dashed rgba(138,223,226,.4);border-radius:14px;padding:16px 18px;margin-bottom:24px}
+.price-tag b{font-family:'Unbounded';font-size:26px;color:#fff}
+.price-tag span{display:block;font-size:12.5px;color:#a9cbcd;letter-spacing:.05em;text-transform:uppercase;margin-bottom:4px}
+
+/* ---------- catalog ---------- */
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:36px;justify-content:center}
+.chip{padding:11px 22px;border-radius:99px;border:1.5px solid var(--line);background:#fff;font-weight:700;font-size:14px;color:#31565a;cursor:pointer;transition:.25s}
+.chip:hover{border-color:var(--teal);color:var(--teal-dark)}
+.chip.active{background:var(--teal);border-color:var(--teal);color:#fff;box-shadow:0 12px 24px -12px rgba(22,169,175,.9)}
+.catalog{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.35s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.card.hide{display:none}
+.card-img{position:relative;height:220px;overflow:hidden;background:var(--paper)}
+.card-img svg{width:100%;height:100%;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.card:hover .card-img svg{transform:scale(1.07)}
+.card-tag{position:absolute;left:16px;top:16px;background:var(--teal);color:#fff;font-size:11.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:7px 13px;border-radius:9px;box-shadow:0 8px 18px -8px rgba(0,0,0,.5)}
+.card-tag.gold{background:var(--gold)}
+.card-tag.dark{background:var(--ink)}
+.card-body{padding:24px;display:flex;flex-direction:column;flex:1}
+.card-price{font-family:'Unbounded';font-size:24px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.card-price small{font-family:'Manrope';font-size:13px;font-weight:700;color:var(--teal-dark);background:rgba(22,169,175,.12);padding:3px 9px;border-radius:7px;margin-left:8px;vertical-align:middle}
+.card h3{font-size:17.5px;font-weight:600;margin-bottom:6px}
+.card-addr{font-size:13.5px;color:var(--muted);display:flex;align-items:center;gap:6px;margin-bottom:18px}
+.card-addr svg{width:14px;height:14px;fill:var(--teal);flex:none}
+.card-specs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.spec{font-size:12.5px;font-weight:700;color:#31565a;background:var(--paper);border:1px solid var(--line);padding:6px 11px;border-radius:8px}
+.card-foot{margin-top:auto;display:flex;gap:10px;align-items:center}
+.card-foot .btn{flex:1;padding:12px 16px;font-size:13.5px}
+
+/* ---------- construction ---------- */
+.constr{background:var(--paper)}
+.constr-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+.constr-list{display:grid;gap:14px;margin-top:30px}
+.citem{display:grid;grid-template-columns:52px 1fr;gap:16px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px;transition:.3s;cursor:pointer}
+.citem:hover{border-color:var(--teal);box-shadow:var(--shadow);transform:translateX(5px)}
+.citem .ico{width:52px;height:52px;border-radius:14px;background:rgba(22,169,175,.12);display:grid;place-items:center}
+.citem .ico svg{width:26px;height:26px;fill:var(--teal-dark)}
+.citem h4{font-size:16px;font-weight:600;margin-bottom:3px}
+.citem p{font-size:13.8px;color:var(--muted)}
+.constr-visual{border-radius:26px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative}
+.constr-note{position:absolute;left:20px;right:20px;bottom:20px;background:rgba(4,38,42,.86);backdrop-filter:blur(6px);border-radius:16px;padding:18px 20px;color:#fff;display:flex;gap:16px;align-items:center}
+.constr-note b{font-family:'Unbounded';font-size:22px;color:var(--teal-light);display:block}
+.constr-note span{font-size:12.5px;color:#bcd8d9}
+
+/* ---------- about ---------- */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-visual{border-radius:26px;overflow:hidden;box-shadow:var(--shadow-lg)}
+.about-text p{color:var(--muted);font-size:16px;margin-bottom:18px}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:30px 0 34px}
+.af{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px}
+.af b{font-family:'Unbounded';font-size:24px;color:var(--teal-dark);display:block;margin-bottom:4px}
+.af span{font-size:13px;color:#31565a;font-weight:600}
+.counters{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:64px;border-top:1px solid var(--line);padding-top:44px}
+.counter{text-align:center}
+.counter b{font-family:'Unbounded';font-size:clamp(30px,3.6vw,46px);font-weight:700;color:var(--ink);display:block;line-height:1}
+.counter b i{font-style:normal;color:var(--teal)}
+.counter span{font-size:13.5px;color:var(--muted);display:block;margin-top:9px}
+
+/* ---------- reviews ---------- */
+.reviews{background:var(--paper)}
+.slider{position:relative;max-width:960px;margin:0 auto}
+.slides{overflow:hidden;border-radius:24px}
+.track{display:flex;transition:transform .6s cubic-bezier(.2,.7,.3,1)}
+.slide{min-width:100%;background:#fff;border:1px solid var(--line);border-radius:24px;padding:44px 46px}
+.slide .quote{font-size:18px;color:#1c4448;line-height:1.65;margin-bottom:28px;position:relative;padding-left:34px}
+.slide .quote::before{content:"”";position:absolute;left:-2px;top:-14px;font-family:'Unbounded';font-size:62px;color:var(--teal-light);line-height:1}
+.reviewer{display:flex;align-items:center;gap:15px}
+.avatar{width:56px;height:56px;border-radius:50%;flex:none;overflow:hidden}
+.reviewer b{display:block;font-size:15.5px;font-family:'Unbounded';font-weight:600}
+.reviewer span{font-size:13px;color:var(--muted)}
+.stars{margin-left:auto;display:flex;gap:3px}
+.stars svg{width:17px;height:17px;fill:var(--gold)}
+.slider-nav{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:30px}
+.sbtn{width:48px;height:48px;border-radius:50%;border:1.5px solid var(--line);background:#fff;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.sbtn:hover{background:var(--teal);border-color:var(--teal)}
+.sbtn svg{width:17px;height:17px;fill:var(--ink);transition:.25s}
+.sbtn:hover svg{fill:#fff}
+.dots{display:flex;gap:8px}
+.dot{width:9px;height:9px;border-radius:50%;background:#c4dcdc;border:none;cursor:pointer;transition:.3s;padding:0}
+.dot.active{background:var(--teal);width:26px;border-radius:6px}
+
+/* ---------- faq ---------- */
+.faq{max-width:900px;margin:0 auto}
+.q{border:1px solid var(--line);border-radius:16px;background:#fff;margin-bottom:12px;overflow:hidden;transition:.3s}
+.q.open{border-color:var(--teal);box-shadow:var(--shadow)}
+.q-head{width:100%;background:none;border:none;padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;cursor:pointer;text-align:left;font-family:'Unbounded';font-weight:600;font-size:16px;color:var(--ink)}
+.q-ico{width:34px;height:34px;border-radius:10px;background:var(--paper);display:grid;place-items:center;flex:none;transition:.3s}
+.q.open .q-ico{background:var(--teal);transform:rotate(45deg)}
+.q-ico svg{width:15px;height:15px;fill:var(--teal-dark);transition:.3s}
+.q.open .q-ico svg{fill:#fff}
+.q-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.2,.7,.3,1)}
+.q-body p{padding:0 24px 24px;color:var(--muted);font-size:15px}
+
+/* ---------- contact ---------- */
+.contact{background:linear-gradient(155deg,#04262a,#0a4a4f);color:#fff;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 400px at 90% 10%,rgba(22,169,175,.3),transparent 70%)}
+.contact-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:54px;position:relative;z-index:2}
+.contact-info h2{font-size:clamp(26px,3.2vw,40px);margin:18px 0 16px}
+.contact-info>p{color:#b3d1d3;font-size:16px;margin-bottom:34px}
+.cinfo{display:grid;gap:18px;margin-bottom:32px}
+.cinfo-item{display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px 18px;transition:.3s}
+.cinfo-item:hover{background:rgba(22,169,175,.16);border-color:rgba(138,223,226,.35)}
+.cinfo-item .ico{width:52px;height:52px;border-radius:14px;background:rgba(22,169,175,.22);display:grid;place-items:center}
+.cinfo-item .ico svg{width:24px;height:24px;fill:var(--teal-light)}
+.cinfo-item span{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9fc4c6;font-weight:700;margin-bottom:3px}
+.cinfo-item b{font-size:16px;font-weight:700;color:#fff}
+.cinfo-item a:hover{color:var(--teal-light)}
+.socials{display:flex;gap:11px}
+.socials a{width:46px;height:46px;border-radius:13px;border:1px solid rgba(255,255,255,.18);display:grid;place-items:center;transition:.28s}
+.socials a:hover{background:var(--teal);border-color:var(--teal);transform:translateY(-3px)}
+.socials svg{width:20px;height:20px;fill:#fff}
+.form-card{background:#fff;color:var(--ink);border-radius:26px;padding:38px;box-shadow:0 40px 90px -40px rgba(0,0,0,.7)}
+.form-card h3{font-size:23px;margin-bottom:8px}
+.form-card>p{color:var(--muted);font-size:14.5px;margin-bottom:26px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.fgroup{margin-bottom:16px;position:relative}
+.fgroup label{display:block;font-size:12.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.fgroup label i{color:var(--teal);font-style:normal}
+.fgroup input,.fgroup select,.fgroup textarea{width:100%;padding:14px 15px;border:1.5px solid var(--line);border-radius:12px;background:var(--paper);outline:none;font-weight:600;font-size:14.5px;transition:.25s;color:var(--ink)}
+.fgroup textarea{resize:vertical;min-height:104px}
+.fgroup input:focus,.fgroup select:focus,.fgroup textarea:focus{border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px rgba(22,169,175,.12)}
+.fgroup.err input,.fgroup.err select,.fgroup.err textarea{border-color:#e05b5b;background:#fff6f6}
+.err-msg{display:none;font-size:12.3px;color:#d64545;font-weight:700;margin-top:6px}
+.fgroup.err .err-msg{display:block}
+.consent{display:flex;gap:11px;align-items:flex-start;font-size:12.8px;color:var(--muted);margin:4px 0 22px;cursor:pointer;line-height:1.5}
+.consent input{width:19px;height:19px;flex:none;margin-top:1px;accent-color:var(--teal);cursor:pointer}
+.consent.err{color:#d64545}
+.form-card .btn{width:100%;padding:17px}
+.form-note{text-align:center;font-size:12px;color:var(--muted);margin-top:14px}
+.success{display:none;text-align:center;padding:34px 10px}
+.success.show{display:block;animation:pop .5s cubic-bezier(.2,.7,.3,1)}
+@keyframes pop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:none}}
+.success .ok{width:86px;height:86px;border-radius:50%;background:rgba(22,169,175,.14);display:grid;place-items:center;margin:0 auto 22px}
+.success .ok svg{width:42px;height:42px;fill:var(--teal)}
+.success h3{margin-bottom:10px}
+.success p{color:var(--muted);font-size:15px;margin-bottom:24px}
+
+/* ---------- cta strip ---------- */
+.cta-strip{background:var(--teal);color:#fff;padding:44px 0}
+.cta-strip .container{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
+.cta-strip h3{font-size:clamp(20px,2.4vw,29px);font-weight:700;max-width:640px}
+.cta-strip p{color:rgba(255,255,255,.85);font-size:15px;margin-top:6px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink);color:#a9cbcd;padding:70px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:50px}
+footer .logo-text b{color:#fff}
+footer .logo-text small{color:var(--teal-light)}
+.foot-about{font-size:14px;margin:20px 0 22px;line-height:1.7;max-width:320px}
+.foot-col h4{color:#fff;font-size:15px;margin-bottom:20px;font-weight:600}
+.foot-col li{margin-bottom:11px}
+.foot-col a{font-size:14px;transition:.25s}
+.foot-col a:hover{color:var(--teal-light);padding-left:4px}
+.foot-contact li{display:flex;gap:11px;font-size:14px;margin-bottom:14px;align-items:flex-start}
+.foot-contact svg{width:17px;height:17px;fill:var(--teal);flex:none;margin-top:3px}
+.foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px}
+.foot-bottom a:hover{color:var(--teal-light)}
+
+/* ---------- to top ---------- */
+.totop{position:fixed;right:26px;bottom:26px;width:52px;height:52px;border-radius:16px;background:var(--teal);border:none;cursor:pointer;display:grid;place-items:center;box-shadow:0 16px 30px -14px rgba(13,124,129,.9);opacity:0;pointer-events:none;transform:translateY(16px);transition:.35s;z-index:70}
+.totop.show{opacity:1;pointer-events:auto;transform:none}
+.totop:hover{background:var(--teal-dark)}
+.totop svg{width:20px;height:20px;fill:#fff}
+
+/* ---------- toast ---------- */
+.toast{position:fixed;left:50%;bottom:32px;transform:translate(-50%,120%);background:var(--ink);color:#fff;padding:15px 26px;border-radius:14px;font-weight:700;font-size:14.5px;box-shadow:var(--shadow-lg);z-index:120;transition:.45s cubic-bezier(.2,.7,.3,1);display:flex;gap:10px;align-items:center}
+.toast.show{transform:translate(-50%,0)}
+.toast svg{width:18px;height:18px;fill:var(--teal-light)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1080px){
+  .menu{display:none}
+  .burger{display:flex}
+  .hero-top,.auction-wrap,.constr-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+  .services-grid,.catalog{grid-template-columns:repeat(2,1fr)}
+  .auction-side{position:static}
+  .search-panel form{grid-template-columns:1fr 1fr}
+  .counters{grid-template-columns:repeat(2,1fr);gap:32px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .header-phone{display:none}
+  .menu.open{display:flex;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;padding:16px;border-bottom:1px solid var(--line);box-shadow:var(--shadow);gap:4px}
+  .menu.open a{padding:14px 16px;border-radius:12px}
+}
+@media(max-width:720px){
+  .sec{padding:70px 0}
+  .services-grid,.catalog,.form-row,.about-features{grid-template-columns:1fr}
+  .search-panel form{grid-template-columns:1fr}
+  .slide{padding:32px 26px}
+  .slide .quote{font-size:16px;padding-left:24px}
+  .stars{margin-left:0}
+  .reviewer{flex-wrap:wrap}
+  .topbar-info span:nth-child(2){display:none}
+  .hero{padding-top:52px}
+  .hero-stats{gap:24px}
+  .foot-grid{grid-template-columns:1fr}
+  .form-card{padding:28px 22px}
+  .cta-strip .container{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ======= TOPBAR ======= -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-info">
+      <span><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> г. Москва, Пресненская наб., 12, офис 4508</span>
+      <span><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></svg> Пн–Сб: 09:00–20:00</span>
+    </div>
+    <div class="topbar-info">
+      <a href="mailto:info@rim-realty.ru"><span><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg> info@rim-realty.ru</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- ======= HEADER ======= -->
+<header id="header">
+  <div class="container nav">
+    <a href="#top" class="logo" aria-label="РИМ — агентство недвижимости">
+      <svg class="logo-mark" viewBox="0 0 2020 1936" xmlns="http://www.w3.org/2000/svg"><path fill="#16a9af" d="M506.811 81.475c76.422-1.24 156.614-.034 233.278-.066l521.191.224 231.36-.064 68.26-.062c26.33-.013 50.29-.33 76.22 4.147 81.98 14.152 155.66 58.163 200.11 129.622 30.52 49.065 43.39 100.578 43.65 158.221.42 94.631.18 189.212.16 283.824l.08 525.269.06 240.86c.04 43.64 2.16 108.18-4.37 149.3-8.06 50.72-40.35 112.15-75.96 148.41-42.52 43.3-99.24 75.12-159.74 84.14-19.59 2.92-36.69 3.37-56.42 3.61l-787.767.09H592.411c-47.586.06-107.415 1.98-153.475-5.76-51.727-8.69-109.5-41.79-146.698-77.99-58.228-56.65-85.038-132.44-84.985-212.79.024-35.13-.23-70.85-.244-106.17l-.017-194.51-.12-513.974.043-234.996c.03-41.335-1.94-110.338 4.94-149.277a277.7 277.7 0 0 1 71.843-141.472c44.018-45.578 109.041-78.36 171.56-87.4 18.079-2.614 33.404-2.852 51.553-3.186"/><path fill="#fefefe" d="m852 325-2 849h110v11H850l.06 48.16 427.496-.43-.09-54-66.21.8L1210 604l-129.723-1.252c-16.12.768-53.53-21.938-61.93-43.786L1017 1185h-43l-.032-674.397 137.839 78.367-1.19-118.114A5545 5545 0 0 0 852 325m219.34 356.476c22.6 12.364 48.78 27.604 71.67 38.247.98 18.633.19 39.881.08 58.729l-.17 93.514.1 227.614c.01 10.16 1.08 80.08-.73 85.18-3.28 2.11-5.9 1.42-10.32 1.52-.96-17.63-.1-40.1-.02-58.05l-.06-92.13.11-306.35c-.04-3.973.57-2.324-1.26-5.314-4.26-2.394-9.9-2.275-14.98-2.683.71 50.662.18 102.501.22 153.267l-.07 311.37q-22.41.405-44.82-.3l-.38-327.511c.06-55.609-1.78-122.41.63-177.103m276.09 801.564c17.4-27.69 32.66-57.02 49.72-84.86 5.75-9.38 29.56-53.17 38.1-54.98 6.23-1.32 41.71-.34 50.97-.24 2.19 81.07-.27 165.27.65 246.85-18.69.22-37.38.28-56.06.18l-.65-68.61c.29-27.6.29-55.21.02-82.82-10.6 12.48-22.14 35.09-30.44 49.94-12.68 22.68-25.72 45.96-37.04 69.31-9.59.4-19.17.84-28.75 1.34-5.1-15.15-26.97-52.28-35.23-67.23-8.04-14.56-20.78-37.94-30.04-51.43-1.05 17.39-.28 41.32-.14 59.16l.32 90.15-54.4-.14c-1.28-36.07-.27-78.22-.14-114.69l-.13-132.82c16.59.79 33.36-.04 50.78.91 12.53 14.54 28.13 42.95 38.39 60.15 15.67 26.28 32.2 51.65 44.07 79.83m-457.248-139.99c18.67-.13 35.403-.65 54.224.02 1.549 49.32.482 103 .653 152.71 14.503-14.52 25.987-33.71 38.266-50.42l74.845-102.5c16.78-.18 33.96.05 50.78.08l-.05 165.56c0 24.97.09 50.17-.17 75.14-.04 4.13.35 4.18-1.84 6.19l-53.87-.06-1.02-153.4c-13.93 10.84-47.72 61.78-59.636 78.88l-52.393 74.28c-12.944.81-35.319-.13-48.962-.27-2.64-80.79 1.037-164.81-.827-246.21m-267.602-.58c29.847-.01 94.515-2.1 120.766 5.95a78 78 0 0 1 30.064 17.3c40.439 37.4 33.794 110.41-15.826 137.23-19.07 10.31-36.994 10.52-58.188 11.11q-22.246.18-44.493.03l.219 74.94c-18.805.35-37.611.61-56.419.77-.483-82.29-.485-164.58-.004-246.88z"/><path fill="#16a9af" d="M654.802 1393.44c19.207-.51 41.966-1.78 60.85.32 32.544 3.61 35.57 41.34 18.006 62.65-16.661 14.17-56.193 9.58-78.736 9.21-.539-23.46-.076-48.56-.12-72.18"/></svg>
+      <span class="logo-text"><b>РИМ</b><small>недвижимость</small></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a href="#services">Услуги</a>
+      <a href="#auction">Торги</a>
+      <a href="#catalog">Объекты</a>
+      <a href="#construction">Строительство</a>
+      <a href="#about">О компании</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:+74951234567" class="header-phone">+7 (495) 123-45-67</a>
+      <a href="#contacts" class="btn btn-primary">Консультация</a>
+      <button class="burger" id="burger" aria-label="Меню"><i></i><i></i><i></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ======= HERO ======= -->
+<section class="hero" id="top">
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div class="hero-top">
+      <div>
+        <span class="eyebrow reveal"><i></i> Работаем с 2009 года · 17 лет на рынке</span>
+        <h1 class="reveal d1">Недвижимость, торги и&nbsp;строительство — <em>под ключ</em></h1>
+        <p class="hero-lead reveal d2">Агентство «РИМ» помогает покупать недвижимость на торгах по цене до 40% ниже рынка, безопасно проводить сделки купли-продажи и строить дома с гарантией 5 лет.</p>
+        <div class="hero-btns reveal d3">
+          <a href="#catalog" class="btn btn-primary">Смотреть объекты
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></a>
+          <a href="#auction" class="btn btn-outline-light">Как проходят торги</a>
+        </div>
+        <div class="hero-stats reveal d4">
+          <div><b data-count="2480" data-suffix="+">0</b><span>закрытых сделок</span></div>
+          <div><b data-count="640" data-suffix="">0</b><span>объектов с торгов</span></div>
+          <div><b data-count="180" data-suffix="">0</b><span>построенных домов</span></div>
+          <div><b data-count="98" data-suffix="%">0</b><span>клиентов рекомендуют</span></div>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal d2">
+        <div class="hero-card">
+          <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Иллюстрация: городская недвижимость">
+            <defs>
+              <linearGradient id="hg1" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#0d5b60"/><stop offset="1" stop-color="#123c40"/>
+              </linearGradient>
+              <linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#8adfe2"/><stop offset="1" stop-color="#16a9af"/>
+              </linearGradient>
+              <linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#0f7378"/><stop offset="1" stop-color="#0a4a4e"/>
+              </linearGradient>
+            </defs>
+            <rect width="520" height="420" rx="18" fill="url(#hg1)"/>
+            <circle cx="420" cy="86" r="42" fill="#f2b263" opacity=".85"/>
+            <circle cx="420" cy="86" r="62" fill="#f2b263" opacity=".14"/>
+            <g opacity=".25" stroke="#8adfe2" stroke-width="1">
+              <path d="M0 300h520M0 340h520M0 260h520"/>
+            </g>
+            <!-- back buildings -->
+            <g fill="#0a4147">
+              <rect x="26" y="176" width="66" height="200" rx="4"/>
+              <rect x="104" y="132" width="52" height="244" rx="4"/>
+              <rect x="366" y="150" width="60" height="226" rx="4"/>
+              <rect x="436" y="196" width="56" height="180" rx="4"/>
+            </g>
+            <!-- main tower -->
+            <rect x="176" y="86" width="112" height="290" rx="6" fill="url(#hg3)"/>
+            <g fill="url(#hg2)" opacity=".9">
+              <rect x="190" y="104" width="20" height="14" rx="2"/><rect x="220" y="104" width="20" height="14" rx="2"/><rect x="250" y="104" width="20" height="14" rx="2"/>
+              <rect x="190" y="132" width="20" height="14" rx="2"/><rect x="220" y="132" width="20" height="14" rx="2"/><rect x="250" y="132" width="20" height="14" rx="2"/>
+              <rect x="190" y="160" width="20" height="14" rx="2"/><rect x="220" y="160" width="20" height="14" rx="2"/><rect x="250" y="160" width="20" height="14" rx="2"/>
+              <rect x="190" y="188" width="20" height="14" rx="2"/><rect x="220" y="188" width="20" height="14" rx="2"/><rect x="250" y="188" width="20" height="14" rx="2"/>
+              <rect x="190" y="216" width="20" height="14" rx="2"/><rect x="220" y="216" width="20" height="14" rx="2"/><rect x="250" y="216" width="20" height="14" rx="2"/>
+              <rect x="190" y="244" width="20" height="14" rx="2"/><rect x="220" y="244" width="20" height="14" rx="2"/><rect x="250" y="244" width="20" height="14" rx="2"/>
+            </g>
+            <rect x="216" y="286" width="32" height="90" rx="3" fill="#f2b263" opacity=".8"/>
+            <!-- right tower -->
+            <rect x="300" y="146" width="56" height="230" rx="5" fill="#0c5257"/>
+            <g fill="#8adfe2" opacity=".55">
+              <rect x="310" y="162" width="14" height="10" rx="2"/><rect x="332" y="162" width="14" height="10" rx="2"/>
+              <rect x="310" y="186" width="14" height="10" rx="2"/><rect x="332" y="186" width="14" height="10" rx="2"/>
+              <rect x="310" y="210" width="14" height="10" rx="2"/><rect x="332" y="210" width="14" height="10" rx="2"/>
+              <rect x="310" y="234" width="14" height="10" rx="2"/><rect x="332" y="234" width="14" height="10" rx="2"/>
+              <rect x="310" y="258" width="14" height="10" rx="2"/><rect x="332" y="258" width="14" height="10" rx="2"/>
+            </g>
+            <!-- house -->
+            <g>
+              <rect x="46" y="300" width="118" height="76" rx="4" fill="#0f6b70"/>
+              <path d="M40 302l64-46 64 46z" fill="#16a9af"/>
+              <rect x="94" y="330" width="26" height="46" rx="2" fill="#f2b263" opacity=".9"/>
+              <rect x="60" y="316" width="22" height="20" rx="2" fill="#8adfe2" opacity=".7"/>
+              <rect x="128" y="316" width="22" height="20" rx="2" fill="#8adfe2" opacity=".7"/>
+            </g>
+            <rect x="0" y="376" width="520" height="44" fill="#072f33"/>
+            <g fill="#16a9af" opacity=".5">
+              <rect x="30" y="388" width="40" height="4" rx="2"/><rect x="110" y="388" width="40" height="4" rx="2"/>
+              <rect x="190" y="388" width="40" height="4" rx="2"/><rect x="270" y="388" width="40" height="4" rx="2"/>
+              <rect x="350" y="388" width="40" height="4" rx="2"/><rect x="430" y="388" width="40" height="4" rx="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="float-badge fb1">
+          <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5l-9-4zm-1.2 15.6-3.6-3.6 1.7-1.7 1.9 1.9 5-5 1.7 1.7-6.7 6.7z"/></svg></span>
+          <span>Юридическая<br>проверка 100%<small>гарантия чистоты сделки</small></span>
+        </div>
+        <div class="float-badge fb2">
+          <span class="badge-ico"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z" opacity=".2"/><path d="M3 17h4v4H3zm7-6h4v10h-4zm7-8h4v18h-4z"/></svg></span>
+          <span>Экономия<br>до 40%<small>на торгах по банкротству</small></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- search -->
+    <div class="search-panel reveal">
+      <form id="searchForm">
+        <div class="field">
+          <label for="s-type">Тип недвижимости</label>
+          <select id="s-type">
+            <option value="all">Любой тип</option>
+            <option value="apartment">Квартира</option>
+            <option value="house">Дом / коттедж</option>
+            <option value="commercial">Коммерческая</option>
+            <option value="land">Земельный участок</option>
+            <option value="auction">Объект с торгов</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-city">Город / район</label>
+          <select id="s-city">
+            <option>Москва и МО</option>
+            <option>Санкт-Петербург</option>
+            <option>Краснодарский край</option>
+            <option>Сочи</option>
+            <option>Другой регион</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="s-budget">Бюджет, до</label>
+          <select id="s-budget">
+            <option>5 млн ₽</option>
+            <option selected>15 млн ₽</option>
+            <option>30 млн ₽</option>
+            <option>60 млн ₽</option>
+            <option>Более 60 млн ₽</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Подобрать
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SERVICES ======= -->
+<section class="sec" id="services" style="padding-top:140px">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow"><i></i> Направления работы</span>
+      <h2>Три ключевые услуги агентства «РИМ»</h2>
+      <p>Полный цикл работы с недвижимостью: от поиска лота на торгах до сдачи построенного дома с чистовой отделкой.</p>
+    </div>
+
+    <div class="services-grid">
+      <article class="svc reveal">
+        <span class="svc-num">01</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M14.5 2.5 22 10l-2 2-1.5-1.5-6.7 6.7L9 20l-5-5 2.8-2.8 6.7-6.7L12 4l2.5-1.5zM3 21h10v2H3v-2z"/></svg></div>
+        <h3>Участие в торгах</h3>
+        <p>Выкупаем имущество банкротов, муниципальные и банковские лоты на электронных площадках по цене на 20–40% ниже рыночной.</p>
+        <ul>
+          <li>Подбор лотов под ваш запрос и бюджет</li>
+          <li>Проверка объекта, обременений и долгов</li>
+          <li>Аккредитация и внесение задатка</li>
+          <li>Торги по 44-ФЗ, 223-ФЗ и 127-ФЗ</li>
+          <li>Сопровождение до получения права собственности</li>
+        </ul>
+        <a href="#auction" class="svc-link">Подробнее об услуге <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></a>
+      </article>
+
+      <article class="svc reveal d1">
+        <span class="svc-num">02</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3L12 3zm0 3.7L18 12v6h-2v-6H8v6H6v-6l6-5.3z"/></svg></div>
+        <h3>Продажа и покупка недвижимости</h3>
+        <p>Квартиры, дома, коммерция и земля. Продаём в срок до 60 дней по максимальной цене, покупаем — с полной юридической защитой.</p>
+        <ul>
+          <li>Оценка и предпродажная подготовка</li>
+          <li>Профессиональная съёмка и реклама объекта</li>
+          <li>База из 12 000+ проверенных предложений</li>
+          <li>Ипотека, материнский капитал, рассрочка</li>
+          <li>Безопасные расчёты и регистрация сделки</li>
+        </ul>
+        <a href="#catalog" class="svc-link">Смотреть объекты <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></a>
+      </article>
+
+      <article class="svc reveal d2">
+        <span class="svc-num">03</span>
+        <div class="svc-ico"><svg viewBox="0 0 24 24"><path d="M13 2 3 7v2h20V7L13 2zM5 11v8H3v2h18v-2h-2v-8h-3v8h-3v-8h-3v8H7v-8H5z"/></svg></div>
+        <h3>Строительные услуги</h3>
+        <p>Проектируем и строим дома, бани и коммерческие объекты. Собственные бригады, фиксированная смета и гарантия 5 лет.</p>
+        <ul>
+          <li>Дома из газобетона, кирпича и клеёного бруса</li>
+          <li>Проектирование и согласование разрешений</li>
+          <li>Инженерные сети, кровля, фасад, отделка</li>
+          <li>Реконструкция и капитальный ремонт</li>
+          <li>Поэтапная оплата и онлайн-отчёты со стройки</li>
+        </ul>
+        <a href="#construction" class="svc-link">Услуги строительства <svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======= AUCTION ======= -->
+<section class="sec dark" id="auction">
+  <div class="container">
+    <div class="head reveal">
+      <span class="eyebrow"><i></i> Торги и банкротство</span>
+      <h2>Купить недвижимость на торгах — выгоднее, чем на рынке</h2>
+      <p>Берём на себя весь цикл: от поиска лота до регистрации права собственности. Вы платите только за результат.</p>
+    </div>
+
+    <div class="auction-wrap">
+      <div class="steps">
+        <div class="step reveal"><div class="step-n">01</div><div><h4>Заявка и брифинг</h4><p>Уточняем регион, тип объекта, бюджет и цели покупки. Подписываем договор на сопровождение.</p></div></div>
+        <div class="step reveal d1"><div class="step-n">02</div><div><h4>Подбор лотов</h4><p>Мониторим 78 электронных площадок: ЕФРСБ, Сбербанк-АСТ, РТС-тендер, Fabrikant, Росэлторг.</p></div></div>
+        <div class="step reveal d1"><div class="step-n">03</div><div><h4>Юридический аудит</h4><p>Проверяем документы, обременения, прописанных лиц, задолженность по ЖКХ и риски оспаривания сделки.</p></div></div>
+        <div class="step reveal d2"><div class="step-n">04</div><div><h4>Осмотр объекта</h4><p>Выезжаем на место, делаем фото- и видеоотчёт, оцениваем реальное состояние и затраты на ремонт.</p></div></div>
+        <div class="step reveal d2"><div class="step-n">05</div><div><h4>Задаток и аккредитация</h4><p>Получаем ЭЦП, подаём заявку, вносим задаток и определяем стратегию участия в аукционе.</p></div></div>
+        <div class="step reveal d3"><div class="step-n">06</div><div><h4>Торги и победа</h4><p>Торгуемся в рамках вашего лимита. Средний дисконт наших клиентов — 31% от начальной цены.</p></div></div>
+        <div class="step reveal d3"><div class="step-n">07</div><div><h4>Оформление собственности</h4><p>Готовим договор, проводим расчёты, регистрируем право в Росреестре и передаём ключи.</p></div></div>
+      </div>
+
+      <aside class="auction-side reveal d1">
+        <div class="scene">
+          <svg viewBox="0 0 560 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Аукционный молоток и документы">
+            <defs>
+              <linearGradient id="ag1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e6a70"/><stop offset="1" stop-color="#062b2f"/></linearGradient>
+              <linearGradient id="ag2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#c98a4b"/><stop offset="1" stop-color="#f2b263"/></linearGradient>
+            </defs>
+            <rect width="560" height="320" fill="url(#ag1)"/>
+            <circle cx="452" cy="70" r="86" fill="#16a9af" opacity=".16"/>
+            <circle cx="90" cy="256" r="70" fill="#8adfe2" opacity=".1"/>
+            <!-- desk -->
+            <path d="M0 250h560v70H0z" fill="#083b3f"/>
+            <path d="M0 250h560l-30 14H30z" fill="#0d5257"/>
+            <!-- documents -->
+            <g transform="rotate(-7 150 210)">
+              <rect x="86" y="150" width="128" height="150" rx="6" fill="#f4f9f9"/>
+              <rect x="98" y="168" width="80" height="7" rx="3.5" fill="#16a9af"/>
+              <g fill="#c3d8d9"><rect x="98" y="188" width="104" height="5" rx="2.5"/><rect x="98" y="200" width="104" height="5" rx="2.5"/><rect x="98" y="212" width="88" height="5" rx="2.5"/><rect x="98" y="224" width="100" height="5" rx="2.5"/></g>
+              <circle cx="180" cy="266" r="18" fill="none" stroke="#16a9af" stroke-width="3"/>
+              <path d="M172 266l6 6 12-13" stroke="#16a9af" stroke-width="4" fill="none" stroke-linecap="round"/>
+            </g>
+            <g transform="rotate(6 250 200)">
+              <rect x="196" y="140" width="122" height="150" rx="6" fill="#fff" opacity=".94"/>
+              <g fill="#d7e6e7"><rect x="210" y="160" width="94" height="6" rx="3"/><rect x="210" y="176" width="78" height="6" rx="3"/><rect x="210" y="192" width="94" height="6" rx="3"/><rect x="210" y="208" width="60" height="6" rx="3"/></g>
+              <rect x="210" y="228" width="94" height="34" rx="6" fill="#e6f7f8"/>
+              <text x="257" y="251" font-family="Unbounded,sans-serif" font-size="15" fill="#0d7c81" text-anchor="middle" font-weight="700">ЛОТ 24</text>
+            </g>
+            <!-- gavel -->
+            <g transform="rotate(-24 400 190)">
+              <rect x="330" y="112" width="130" height="52" rx="12" fill="url(#ag2)"/>
+              <rect x="330" y="112" width="24" height="52" rx="10" fill="#a96f38"/>
+              <rect x="436" y="112" width="24" height="52" rx="10" fill="#a96f38"/>
+              <rect x="440" y="128" width="118" height="20" rx="10" fill="#8c5a2c"/>
+            </g>
+            <ellipse cx="392" cy="256" rx="86" ry="12" fill="#000" opacity=".28"/>
+            <!-- keys -->
+            <g transform="translate(452 214) rotate(18)">
+              <circle cx="0" cy="0" r="20" fill="none" stroke="#8adfe2" stroke-width="7"/>
+              <rect x="14" y="-4" width="56" height="8" rx="4" fill="#8adfe2"/>
+              <rect x="52" y="4" width="8" height="14" rx="2" fill="#8adfe2"/>
+              <rect x="64" y="4" width="8" height="10" rx="2" fill="#8adfe2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="price-tag">
+          <span>Средняя экономия клиента</span>
+          <b>1 240 000 ₽</b>
+        </div>
+        <ul class="mini-list">
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Работаем по договору, комиссия — 3% от выигрыша</li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Возвращаем задаток, если лот снят с торгов</li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Поможем с кредитом под залог купленного объекта</li>
+          <li><span class="check"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></span> Страхование титула на 3 года в подарок</li>
+        </ul>
+        <a href="#contacts" class="btn btn-primary" style="width:100%">Получить подборку лотов</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CATALOG ======= -->
+<section class="sec" id="catalog">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow"><i></i> Каталог</span>
+      <h2>Актуальные объекты агентства</h2>
+      <p>Собственная база и проверенные лоты с торгов. Все объекты прошли юридическую экспертизу «РИМ».</p>
+    </div>
+
+    <div class="filters reveal" id="filters">
+      <button class="chip active" data-filter="all">Все объекты</button>
+      <button class="chip" data-filter="apartment">Квартиры</button>
+      <button class="chip" data-filter="house">Дома</button>
+      <button class="chip" data-filter="commercial">Коммерция</button>
+      <button class="chip" data-filter="land">Участки</button>
+      <button class="chip" data-filter="auction">С торгов</button>
+    </div>
+
+    <div class="catalog" id="catalogGrid">
+
+      <!-- 1 -->
+      <article class="card reveal" data-cat="apartment">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c1s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffd9a8"/><stop offset="45%" stop-color="#f6a98d"/><stop offset="100%" stop-color="#16a9af"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c1s)"/>
+            <circle cx="308" cy="72" r="26" fill="#fff3da" opacity=".92"/>
+            <g fill="#0d5f65" opacity=".55"><rect x="0" y="130" width="46" height="110"/><rect x="52" y="106" width="38" height="134"/><rect x="330" y="120" width="70" height="120"/></g>
+            <rect x="128" y="60" width="94" height="180" rx="4" fill="#0a4a4f"/>
+            <rect x="228" y="96" width="76" height="144" rx="4" fill="#0c5a60"/>
+            <g fill="#8adfe2" opacity=".85">
+              <rect x="140" y="74" width="18" height="14" rx="2"/><rect x="166" y="74" width="18" height="14" rx="2"/><rect x="192" y="74" width="18" height="14" rx="2"/>
+              <rect x="140" y="100" width="18" height="14" rx="2"/><rect x="166" y="100" width="18" height="14" rx="2"/><rect x="192" y="100" width="18" height="14" rx="2"/>
+              <rect x="140" y="126" width="18" height="14" rx="2"/><rect x="166" y="126" width="18" height="14" rx="2"/><rect x="192" y="126" width="18" height="14" rx="2"/>
+              <rect x="140" y="152" width="18" height="14" rx="2"/><rect x="166" y="152" width="18" height="14" rx="2"/><rect x="192" y="152" width="18" height="14" rx="2"/>
+              <rect x="240" y="112" width="18" height="14" rx="2"/><rect x="266" y="112" width="18" height="14" rx="2"/>
+              <rect x="240" y="138" width="18" height="14" rx="2"/><rect x="266" y="138" width="18" height="14" rx="2"/>
+              <rect x="240" y="164" width="18" height="14" rx="2"/><rect x="266" y="164" width="18" height="14" rx="2"/>
+            </g>
+            <rect x="164" y="196" width="26" height="44" rx="2" fill="#f2b263"/>
+            <rect x="0" y="228" width="400" height="12" fill="#072f33"/>
+          </svg>
+          <span class="card-tag">Хит продаж</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">14 900 000 ₽</div>
+          <h3>3-комн. квартира в ЖК «Северная пристань»</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Москва, ул. Причальная, 14к2 · 8 мин до метро</p>
+          <div class="card-specs"><span class="spec">82 м²</span><span class="spec">3 комнаты</span><span class="spec">12/24 этаж</span><span class="spec">2023 год</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="3-комн. квартира, ЖК «Северная пристань» — 14 900 000 ₽">Узнать подробности</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="card reveal d1" data-cat="house">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c2s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b3c46"/><stop offset="55%" stop-color="#157a80"/><stop offset="100%" stop-color="#2fb3a9"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c2s)"/>
+            <circle cx="70" cy="52" r="20" fill="#fdf3d8" opacity=".9"/>
+            <g fill="#ffffff" opacity=".12"><ellipse cx="180" cy="46" rx="52" ry="14"/><ellipse cx="300" cy="70" rx="44" ry="12"/></g>
+            <rect x="0" y="176" width="400" height="64" fill="#1b6b4a"/>
+            <rect x="0" y="176" width="400" height="8" fill="#2a8a5e"/>
+            <!-- house -->
+            <rect x="112" y="118" width="176" height="72" rx="3" fill="#f2f6f4"/>
+            <path d="M100 120l100-56 100 56z" fill="#2b3d42"/>
+            <rect x="128" y="136" width="34" height="30" rx="2" fill="#8adfe2"/>
+            <rect x="238" y="136" width="34" height="30" rx="2" fill="#8adfe2"/>
+            <rect x="180" y="140" width="38" height="50" rx="2" fill="#16a9af"/>
+            <circle cx="210" cy="166" r="3" fill="#fff"/>
+            <rect x="286" y="96" width="16" height="42" fill="#8c5a2c"/>
+            <!-- trees -->
+            <g fill="#14563c"><circle cx="58" cy="150" r="26"/><circle cx="348" cy="146" r="30"/></g>
+            <rect x="54" y="168" width="8" height="24" fill="#6b4526"/><rect x="344" y="168" width="9" height="26" fill="#6b4526"/>
+            <g fill="#f2b263" opacity=".9"><rect x="132" y="140" width="26" height="22" opacity=".35"/><rect x="242" y="140" width="26" height="22" opacity=".35"/></g>
+          </svg>
+          <span class="card-tag gold">Новое</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">27 400 000 ₽</div>
+          <h3>Коттедж 168 м² с участком 12 соток</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> МО, Истра, КП «Римские холмы» · ИЖС</p>
+          <div class="card-specs"><span class="spec">168 м²</span><span class="spec">12 соток</span><span class="spec">2 этажа</span><span class="spec">Газ, свет</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="Коттедж 168 м², КП «Римские холмы» — 27 400 000 ₽">Узнать подробности</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="card reveal d2" data-cat="auction">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c3s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06333a"/><stop offset="100%" stop-color="#0e7c82"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c3s)"/>
+            <g opacity=".18" stroke="#8adfe2" stroke-width="1"><path d="M0 40h400M0 90h400M0 140h400M0 190h400M80 0v240M180 0v240M280 0v240"/></g>
+            <rect x="60" y="60" width="120" height="140" rx="6" fill="#f4f9f9"/>
+            <rect x="74" y="76" width="66" height="8" rx="4" fill="#16a9af"/>
+            <g fill="#c9dcdd"><rect x="74" y="96" width="92" height="6" rx="3"/><rect x="74" y="110" width="92" height="6" rx="3"/><rect x="74" y="124" width="72" height="6" rx="3"/><rect x="74" y="138" width="86" height="6" rx="3"/></g>
+            <rect x="74" y="156" width="92" height="30" rx="6" fill="#e6f7f8"/>
+            <text x="120" y="176" font-family="Unbounded,sans-serif" font-size="13" fill="#0d7c81" text-anchor="middle" font-weight="700">ЛОТ 118</text>
+            <g transform="rotate(-20 300 130)">
+              <rect x="238" y="96" width="112" height="44" rx="10" fill="#f2b263"/>
+              <rect x="238" y="96" width="20" height="44" rx="9" fill="#c98a4b"/>
+              <rect x="330" y="96" width="20" height="44" rx="9" fill="#c98a4b"/>
+              <rect x="340" y="110" width="86" height="16" rx="8" fill="#a9762f"/>
+            </g>
+            <ellipse cx="292" cy="196" rx="76" ry="9" fill="#000" opacity=".3"/>
+            <rect x="0" y="212" width="400" height="28" fill="#04262a"/>
+          </svg>
+          <span class="card-tag dark">С торгов · −34%</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">6 850 000 ₽ <small>рыночная 10,4 млн</small></div>
+          <h3>2-комн. квартира, 54 м² — лот банкрота</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Москва, ул. Куусинена, 7 · торги 18.10</p>
+          <div class="card-specs"><span class="spec">54 м²</span><span class="spec">2 комнаты</span><span class="spec">5/9 этаж</span><span class="spec">Задаток 5%</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="Лот с торгов: 2-комн. квартира 54 м², ул. Куусинена — 6 850 000 ₽">Участвовать в торгах</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="card reveal" data-cat="commercial">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c4s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe9ec"/><stop offset="100%" stop-color="#7fd0d6"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c4s)"/>
+            <circle cx="330" cy="48" r="22" fill="#fff" opacity=".65"/>
+            <rect x="96" y="52" width="208" height="150" rx="4" fill="#0d5b60"/>
+            <g fill="#bdeef0" opacity=".85">
+              <rect x="110" y="66" width="26" height="18" rx="2"/><rect x="146" y="66" width="26" height="18" rx="2"/><rect x="182" y="66" width="26" height="18" rx="2"/><rect x="218" y="66" width="26" height="18" rx="2"/><rect x="254" y="66" width="26" height="18" rx="2"/>
+              <rect x="110" y="94" width="26" height="18" rx="2"/><rect x="146" y="94" width="26" height="18" rx="2"/><rect x="182" y="94" width="26" height="18" rx="2"/><rect x="218" y="94" width="26" height="18" rx="2"/><rect x="254" y="94" width="26" height="18" rx="2"/>
+              <rect x="110" y="122" width="26" height="18" rx="2"/><rect x="146" y="122" width="26" height="18" rx="2"/><rect x="182" y="122" width="26" height="18" rx="2"/><rect x="218" y="122" width="26" height="18" rx="2"/><rect x="254" y="122" width="26" height="18" rx="2"/>
+            </g>
+            <rect x="150" y="152" width="100" height="50" rx="3" fill="#f2b263"/>
+            <rect x="164" y="162" width="32" height="40" rx="2" fill="#0a4a4f"/>
+            <rect x="206" y="162" width="32" height="40" rx="2" fill="#0a4a4f"/>
+            <rect x="0" y="200" width="400" height="40" fill="#9db9bb"/>
+            <g fill="#fff" opacity=".5"><rect x="30" y="216" width="40" height="4" rx="2"/><rect x="120" y="216" width="40" height="4" rx="2"/><rect x="240" y="216" width="40" height="4" rx="2"/><rect x="330" y="216" width="40" height="4" rx="2"/></g>
+            <g fill="#14563c"><circle cx="52" cy="182" r="20"/><circle cx="352" cy="184" r="18"/></g>
+          </svg>
+          <span class="card-tag">Инвестиция</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">42 000 000 ₽ <small>доход 11,2%</small></div>
+          <h3>Офисный блок 240 м² в БЦ класса B+</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Москва, Дербеневская наб., 7с22 · ЦАО</p>
+          <div class="card-specs"><span class="spec">240 м²</span><span class="spec">4 этаж</span><span class="spec">Арендаторы</span><span class="spec">Парковка</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="Офисный блок 240 м², БЦ на Дербеневской — 42 000 000 ₽">Узнать подробности</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="card reveal d1" data-cat="land">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c5s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe6f2"/><stop offset="60%" stop-color="#e8d7ae"/><stop offset="100%" stop-color="#8fbf6a"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c5s)"/>
+            <circle cx="60" cy="48" r="20" fill="#fff5d6"/>
+            <g fill="#fff" opacity=".7"><ellipse cx="220" cy="44" rx="56" ry="14"/><ellipse cx="300" cy="62" rx="40" ry="11"/></g>
+            <path d="M0 150h400v90H0z" fill="#79ad55"/>
+            <path d="M0 150l400-14v24L0 172z" fill="#8fbf6a"/>
+            <!-- plot -->
+            <path d="M96 168 L300 158 L330 214 L74 220 Z" fill="#cfe3b0" opacity=".85" stroke="#0d7c81" stroke-width="3" stroke-dasharray="10 7"/>
+            <g fill="#f2b263"><rect x="90" y="150" width="6" height="42" rx="3"/><rect x="298" y="140" width="6" height="44" rx="3"/><rect x="326" y="196" width="6" height="40" rx="3"/><rect x="70" y="200" width="6" height="40" rx="3"/></g>
+            <g fill="#14563c"><circle cx="356" cy="150" r="22"/><circle cx="34" cy="158" r="18"/></g>
+            <rect x="352" y="164" width="8" height="24" fill="#6b4526"/><rect x="30" y="170" width="7" height="22" fill="#6b4526"/>
+            <!-- house plan -->
+            <g transform="translate(160 168) rotate(-4)"><rect width="86" height="52" rx="4" fill="#fff" opacity=".92"/><path d="M8 26h70M43 8v36" stroke="#16a9af" stroke-width="2"/><rect x="12" y="12" width="24" height="10" fill="#cdeef0"/><rect x="50" y="32" width="24" height="10" fill="#cdeef0"/></g>
+          </svg>
+          <span class="card-tag">ИЖС</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">4 350 000 ₽</div>
+          <h3>Участок 15 соток у леса, ИЖС</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> МО, Дмитровский р-н, д. Астрецово</p>
+          <div class="card-specs"><span class="spec">15 соток</span><span class="spec">ИЖС</span><span class="spec">Электричество</span><span class="spec">Подъезд</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="Участок 15 соток ИЖС, Дмитровский р-н — 4 350 000 ₽">Узнать подробности</button>
+            <button class="btn btn-ghost js-build">Построить дом</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="card reveal d2" data-cat="auction house">
+        <div class="card-img">
+          <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="c6s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#123f47"/><stop offset="100%" stop-color="#1a8189"/></linearGradient></defs>
+            <rect width="400" height="240" fill="url(#c6s)"/>
+            <circle cx="330" cy="60" r="24" fill="#f2b263" opacity=".8"/>
+            <rect x="0" y="180" width="400" height="60" fill="#0b3238"/>
+            <!-- taunhouse -->
+            <g>
+              <rect x="60" y="112" width="90" height="76" fill="#f4f9f9"/>
+              <path d="M52 114l53-34 53 34z" fill="#22414a"/>
+              <rect x="150" y="112" width="90" height="76" fill="#e2ecec"/>
+              <path d="M142 114l53-34 53 34z" fill="#1b343b"/>
+              <rect x="240" y="112" width="90" height="76" fill="#f4f9f9"/>
+              <path d="M232 114l53-34 53 34z" fill="#22414a"/>
+            </g>
+            <g fill="#8adfe2" opacity=".85">
+              <rect x="76" y="130" width="24" height="22" rx="2"/><rect x="112" y="130" width="24" height="22" rx="2"/>
+              <rect x="166" y="130" width="24" height="22" rx="2"/><rect x="202" y="130" width="24" height="22" rx="2"/>
+              <rect x="256" y="130" width="24" height="22" rx="2"/><rect x="292" y="130" width="24" height="22" rx="2"/>
+            </g>
+            <g fill="#f2b263"><rect x="94" y="162" width="22" height="26" rx="2"/><rect x="184" y="162" width="22" height="26" rx="2"/><rect x="274" y="162" width="22" height="26" rx="2"/></g>
+            <rect x="0" y="188" width="400" height="6" fill="#16a9af" opacity=".5"/>
+            <g fill="#14563c"><circle cx="30" cy="176" r="16"/><circle cx="374" cy="172" r="18"/></g>
+          </svg>
+          <span class="card-tag dark">С торгов · −28%</span>
+        </div>
+        <div class="card-body">
+          <div class="card-price">11 200 000 ₽ <small>рыночная 15,6 млн</small></div>
+          <h3>Таунхаус 112 м² с террасой, 3 сотки</h3>
+          <p class="card-addr"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> МО, Одинцово, КП «Римский двор» · торги 26.10</p>
+          <div class="card-specs"><span class="spec">112 м²</span><span class="spec">3 сотки</span><span class="spec">2 уровня</span><span class="spec">Без обременений</span></div>
+          <div class="card-foot">
+            <button class="btn btn-primary js-ask" data-object="Лот с торгов: таунхаус 112 м², КП «Римский двор» — 11 200 000 ₽">Участвовать в торгах</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center;margin-top:46px" class="reveal">
+      <a href="#contacts" class="btn btn-ghost" style="padding:16px 34px">Запросить полную базу объектов · 12 400+ позиций</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONSTRUCTION ======= -->
+<section class="sec constr" id="construction">
+  <div class="container">
+    <div class="constr-grid">
+      <div>
+        <span class="eyebrow reveal"><i></i> Строительное направление</span>
+        <h2 class="reveal d1" style="font-size:clamp(26px,3.2vw,40px);margin:18px 0 16px">Строим дома, в которых хочется жить</h2>
+        <p class="reveal d2" style="color:var(--muted);font-size:16px;margin-bottom:8px">Собственный проектный отдел, 12 бригад и склад материалов. Фиксируем смету в договоре — она не меняется в процессе строительства.</p>
+
+        <div class="constr-list">
+          <div class="citem reveal">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M3 21V9l9-6 9 6v12h-6v-7H9v7H3z"/></svg></span>
+            <div><h4>Дома под ключ</h4><p>Газобетон, кирпич, клеёный брус, каркас. От 38 000 ₽/м², срок от 4 месяцев.</p></div>
+          </div>
+          <div class="citem reveal d1">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 3h16v2H4zm2 4h12v3H6zm-2 5h16v9H4zm3 3v3h4v-3z"/></svg></span>
+            <div><h4>Проектирование</h4><p>Индивидуальные и типовые проекты, архитектурные решения и согласование в администрации.</p></div>
+          </div>
+          <div class="citem reveal d1">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2 2 8v2h20V8L12 2zm-7 10v8H3v2h18v-2h-2v-8h-3v8h-2v-8h-2v8H8v-8H5z"/></svg></span>
+            <div><h4>Фундаменты и коробки</h4><p>Плитные, ленточные и свайно-ростверковые фундаменты с геологией участка.</p></div>
+          </div>
+          <div class="citem reveal d2">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M2 12 12 3l10 9-1.5 1.7L12 6.6l-8.5 7.1z"/><path d="M5 12h14v9H5z" opacity=".55"/></svg></span>
+            <div><h4>Кровля и фасады</h4><p>Мягкая и фальцевая кровля, мокрый и вентилируемый фасад, утепление.</p></div>
+          </div>
+          <div class="citem reveal d2">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zm9 0h7v7h-7zM4 13h7v7H4zm9 0h7v7h-7z" opacity=".55"/><path d="M12 2v20M2 12h20" stroke="#0d7c81" stroke-width="2"/></svg></span>
+            <div><h4>Инженерные сети</h4><p>Электрика, отопление, водоснабжение, канализация, вентиляция и умный дом.</p></div>
+          </div>
+          <div class="citem reveal d3">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M21 3 3 10.5l7.5 3L13.5 21z"/></svg></span>
+            <div><h4>Реконструкция и ремонт</h4><p>Капитальный ремонт квартир, пристройки, усиление конструкций и отделка.</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="constr-visual reveal d1">
+        <svg viewBox="0 0 560 620" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Строительная площадка">
+          <defs>
+            <linearGradient id="cs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#bfe4e8"/><stop offset="55%" stop-color="#7fc9cf"/><stop offset="100%" stop-color="#3d9ea6"/></linearGradient>
+            <linearGradient id="cs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b263"/><stop offset="100%" stop-color="#d9903f"/></linearGradient>
+          </defs>
+          <rect width="560" height="620" fill="url(#cs1)"/>
+          <circle cx="450" cy="90" r="44" fill="#fff8e4" opacity=".85"/>
+          <g fill="#fff" opacity=".55"><ellipse cx="140" cy="80" rx="70" ry="18"/><ellipse cx="250" cy="112" rx="52" ry="14"/></g>
+          <!-- crane -->
+          <g stroke="#f2a93b" stroke-width="9" fill="none" stroke-linecap="round">
+            <path d="M96 560V150"/><path d="M96 150h300"/><path d="M96 150l60-56 60 56"/>
+            <path d="M96 190h300" opacity=".35"/>
+          </g>
+          <g stroke="#e08b28" stroke-width="4">
+            <path d="M96 210l40-40M96 260l40-40M96 310l40-40M96 360l40-40M96 410l40-40M96 460l40-40M96 510l40-40"/>
+            <path d="M136 210L96 170M136 260l-40-40M136 310l-40-40M136 360l-40-40M136 410l-40-40M136 460l-40-40M136 510l-40-40"/>
+          </g>
+          <path d="M330 150v70" stroke="#0a4a4f" stroke-width="3"/>
+          <rect x="312" y="216" width="36" height="26" rx="4" fill="#0a4a4f"/>
+          <path d="M330 242v34" stroke="#0a4a4f" stroke-width="3"/>
+          <rect x="314" y="274" width="32" height="14" rx="4" fill="url(#cs2)"/>
+          <!-- building under construction -->
+          <rect x="180" y="300" width="240" height="260" fill="#e7eeec"/>
+          <rect x="180" y="300" width="240" height="18" fill="#c9d6d4"/>
+          <g fill="#0d5b60" opacity=".8">
+            <rect x="196" y="334" width="46" height="40"/><rect x="256" y="334" width="46" height="40"/><rect x="316" y="334" width="46" height="40"/><rect x="376" y="334" width="30" height="40"/>
+            <rect x="196" y="392" width="46" height="40"/><rect x="256" y="392" width="46" height="40"/><rect x="316" y="392" width="46" height="40"/><rect x="376" y="392" width="30" height="40"/>
+            <rect x="196" y="450" width="46" height="40"/><rect x="256" y="450" width="46" height="40"/><rect x="316" y="450" width="46" height="40"/><rect x="376" y="450" width="30" height="40"/>
+          </g>
+          <g stroke="#f2a93b" stroke-width="6"><path d="M180 328h240M180 386h240M180 444h240M180 502h240"/></g>
+          <!-- scaffolding -->
+          <g stroke="#8fa6a8" stroke-width="4">
+            <path d="M150 560V300M170 560V300M150 340h20M150 400h20M150 460h20M150 520h20"/>
+          </g>
+          <!-- ground -->
+          <rect x="0" y="556" width="560" height="64" fill="#8c7a5e"/>
+          <rect x="0" y="556" width="560" height="10" fill="#a08c6b"/>
+          <!-- bricks & materials -->
+          <g fill="#c96a4a">
+            <rect x="440" y="510" width="34" height="16" rx="3"/><rect x="440" y="528" width="34" height="16" rx="3"/><rect x="478" y="528" width="34" height="16" rx="3"/><rect x="459" y="492" width="34" height="16" rx="3"/>
+          </g>
+          <g fill="#b08a52"><rect x="24" y="524" width="90" height="20" rx="4"/><rect x="34" y="506" width="70" height="16" rx="4"/></g>
+          <!-- worker -->
+          <g transform="translate(118 470)">
+            <circle cx="18" cy="14" r="11" fill="#f4c9a2"/>
+            <path d="M5 12a13 13 0 0 1 26 0z" fill="#f2a93b"/>
+            <rect x="2" y="24" width="32" height="42" rx="8" fill="#16a9af"/>
+            <rect x="8" y="64" width="9" height="30" rx="4" fill="#2b4a52"/>
+            <rect x="20" y="64" width="9" height="30" rx="4" fill="#2b4a52"/>
+            <rect x="30" y="30" width="26" height="8" rx="4" fill="#f4c9a2"/>
+          </g>
+        </svg>
+        <div class="constr-note">
+          <div><b>180+</b><span>домов сдано<br>с 2012 года</span></div>
+          <div style="width:1px;height:46px;background:rgba(255,255,255,.2)"></div>
+          <div><b>5 лет</b><span>гарантия<br>по договору</span></div>
+          <div style="width:1px;height:46px;background:rgba(255,255,255,.2)"></div>
+          <div><b>0 ₽</b><span>смета не<br>растёт</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CTA STRIP ======= -->
+<div class="cta-strip">
+  <div class="container">
+    <div>
+      <h3>Не знаете, с чего начать? Получите бесплатную консультацию эксперта «РИМ»</h3>
+      <p>Перезвоним в течение 15 минут, подберём стратегию покупки или строительства.</p>
+    </div>
+    <a href="#contacts" class="btn btn-light">Получить консультацию</a>
+  </div>
+</div>
+
+<!-- ======= ABOUT ======= -->
+<section class="sec" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <svg viewBox="0 0 560 520" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Команда агентства РИМ">
+          <defs>
+            <linearGradient id="ab1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a4a4f"/><stop offset="100%" stop-color="#16a9af"/></linearGradient>
+          </defs>
+          <rect width="560" height="520" fill="url(#ab1)"/>
+          <g opacity=".14" stroke="#fff" stroke-width="1"><path d="M0 60h560M0 140h560M0 220h560M0 300h560M0 380h560M0 460h560M70 0v520M170 0v520M270 0v520M370 0v520M470 0v520"/></g>
+          <!-- office window -->
+          <rect x="44" y="48" width="200" height="150" rx="10" fill="#06363a" opacity=".6"/>
+          <g fill="#8adfe2" opacity=".5"><rect x="58" y="62" width="26" height="22"/><rect x="94" y="62" width="26" height="22"/><rect x="130" y="62" width="26" height="22"/><rect x="58" y="96" width="26" height="22"/><rect x="94" y="96" width="26" height="22"/><rect x="130" y="96" width="26" height="22"/></g>
+          <circle cx="200" cy="106" r="24" fill="#f2b263" opacity=".85"/>
+          <!-- desk -->
+          <rect x="120" y="330" width="330" height="16" rx="6" fill="#04262a"/>
+          <rect x="140" y="346" width="14" height="90" fill="#04262a"/>
+          <rect x="416" y="346" width="14" height="90" fill="#04262a"/>
+          <!-- laptop -->
+          <g><rect x="200" y="286" width="104" height="46" rx="6" fill="#e7f4f4"/><rect x="188" y="330" width="128" height="8" rx="4" fill="#b9d4d5"/><rect x="212" y="296" width="80" height="26" rx="3" fill="#16a9af"/></g>
+          <!-- people -->
+          <g>
+            <circle cx="330" cy="238" r="30" fill="#f4c9a2"/><path d="M294 214a36 36 0 0 1 72 0c0-22-16-32-36-32s-36 10-36 32z" fill="#2b3d42"/>
+            <path d="M282 340c0-42 22-64 48-64s48 22 48 64z" fill="#f4f9f9"/>
+            <rect x="316" y="286" width="28" height="14" rx="4" fill="#16a9af"/>
+          </g>
+          <g>
+            <circle cx="430" cy="256" r="26" fill="#e8b78d"/><path d="M400 240a30 30 0 0 1 60 0c0-20-14-28-30-28s-30 8-30 28z" fill="#5a3a22"/>
+            <path d="M392 340c0-36 18-54 38-54s38 18 38 54z" fill="#0d7c81"/>
+          </g>
+          <!-- certificates -->
+          <g transform="translate(300 60)">
+            <rect width="212" height="120" rx="10" fill="#fff" opacity=".95"/>
+            <rect x="18" y="18" width="86" height="8" rx="4" fill="#16a9af"/>
+            <g fill="#d6e6e7"><rect x="18" y="36" width="176" height="6" rx="3"/><rect x="18" y="50" width="176" height="6" rx="3"/><rect x="18" y="64" width="132" height="6" rx="3"/></g>
+            <circle cx="176" cy="92" r="18" fill="none" stroke="#f2b263" stroke-width="4"/>
+            <path d="M168 92l6 6 12-12" stroke="#f2b263" stroke-width="4" fill="none" stroke-linecap="round"/>
+            <text x="18" y="98" font-family="Unbounded,sans-serif" font-size="11" fill="#0a4a4f" font-weight="700">СРО · ЛИЦЕНЗИЯ</text>
+          </g>
+          <!-- plant -->
+          <rect x="60" y="380" width="46" height="56" rx="8" fill="#04262a"/>
+          <g fill="#2fa36b"><ellipse cx="72" cy="360" rx="14" ry="26" transform="rotate(-24 72 360)"/><ellipse cx="96" cy="356" rx="14" ry="28" transform="rotate(20 96 356)"/><ellipse cx="84" cy="342" rx="12" ry="26"/></g>
+          <rect x="0" y="436" width="560" height="84" fill="#04262a" opacity=".55"/>
+        </svg>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow reveal"><i></i> О компании</span>
+        <h2 class="reveal d1" style="font-size:clamp(26px,3.2vw,40px);margin:18px 0 18px">«РИМ» — команда, которой доверяют сложные сделки</h2>
+        <p class="reveal d2">Мы основаны в 2009 году как бюро по сопровождению торгов, а сегодня — это агентство полного цикла: 34 специалиста, собственный юридический отдел, проектное бюро и строительные бригады.</p>
+        <p class="reveal d2">Работаем официально: договор с фиксированной стоимостью услуг, отчётность на каждом этапе и ответственность, застрахованная на 30 млн ₽.</p>
+        <div class="about-features reveal d3">
+          <div class="af"><b>34</b><span>специалиста в штате</span></div>
+          <div class="af"><b>78</b><span>электронных площадок</span></div>
+          <div class="af"><b>СРО</b><span>допуск на строительство</span></div>
+          <div class="af"><b>30 млн ₽</b><span>страхование ответственности</span></div>
+        </div>
+        <a href="#contacts" class="btn btn-primary reveal d3">Познакомиться с командой</a>
+      </div>
+    </div>
+
+    <div class="counters">
+      <div class="counter reveal"><b><span data-count="17">0</span></b><span>лет на рынке недвижимости</span></div>
+      <div class="counter reveal d1"><b><span data-count="2480">0</span><i>+</i></b><span>успешных сделок купли-продажи</span></div>
+      <div class="counter reveal d2"><b><span data-count="640">0</span></b><span>выигранных лотов на торгах</span></div>
+      <div class="counter reveal d3"><b><span data-count="180">0</span><i>+</i></b><span>построенных объектов</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= REVIEWS ======= -->
+<section class="sec reviews" id="reviews">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow"><i></i> Отзывы клиентов</span>
+      <h2>Что говорят о работе с «РИМ»</h2>
+      <p>Средняя оценка 4,9 из 5 по 312 отзывам на независимых площадках.</p>
+    </div>
+
+    <div class="slider reveal">
+      <div class="slides">
+        <div class="track" id="track">
+
+          <div class="slide">
+            <p class="quote">Искали квартиру в Москве и случайно узнали про торги. Команда «РИМ» подобрала лот в Хорошёвском районе, проверила все документы и выкупила квартиру на 3,1 млн дешевле рынка. Сделка заняла 6 недель, включая регистрацию. Всё прозрачно, каждый шаг — с отчётом.</p>
+            <div class="reviewer">
+              <span class="avatar"><svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#0d7c81"/><circle cx="28" cy="21" r="10" fill="#8adfe2"/><path d="M8 56c0-11 9-19 20-19s20 8 20 19z" fill="#8adfe2"/></svg></span>
+              <div><b>Андрей Мельников</b><span>Купил квартиру с торгов · Москва</span></div>
+              <span class="stars"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg></span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <p class="quote">Заказывали строительство дома 148 м² из газобетона. Понравилось, что смета зафиксирована в договоре и ни разу не выросла. Прораб присылал фотоотчёты каждую неделю, все сроки соблюдены. Дом сдали с отделкой под ключ, заехали через 5,5 месяцев после начала работ.</p>
+            <div class="reviewer">
+              <span class="avatar"><svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#f2b263"/><circle cx="28" cy="21" r="10" fill="#fff"/><path d="M8 56c0-11 9-19 20-19s20 8 20 19z" fill="#fff"/></svg></span>
+              <div><b>Елена и Сергей Ковалёвы</b><span>Построили дом · Дмитровское шоссе</span></div>
+              <span class="stars"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg></span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <p class="quote">Продавали двухкомнатную квартиру в старом фонде с непростыми документами — наследство и доли. Юристы «РИМ» всё привели в порядок, сделали профессиональные фото и продали за 41 день практически по верхней границе рынка. Расчёты через аккредитив, никаких нервов.</p>
+            <div class="reviewer">
+              <span class="avatar"><svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#06333a"/><circle cx="28" cy="21" r="10" fill="#16a9af"/><path d="M8 56c0-11 9-19 20-19s20 8 20 19z" fill="#16a9af"/></svg></span>
+              <div><b>Марина Долгова</b><span>Продала квартиру · Санкт-Петербург</span></div>
+              <span class="stars"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg></span>
+            </div>
+          </div>
+
+          <div class="slide">
+            <p class="quote">Покупали коммерческое помещение под сеть кофеен. «РИМ» нашли объект на торгах банка, провели аудит по арендаторам и оформили сделку за месяц. Доходность оказалась даже выше расчётной. Отдельное спасибо за помощь с ипотекой для юрлица.</p>
+            <div class="reviewer">
+              <span class="avatar"><svg viewBox="0 0 56 56"><rect width="56" height="56" fill="#8adfe2"/><circle cx="28" cy="21" r="10" fill="#04262a"/><path d="M8 56c0-11 9-19 20-19s20 8 20 19z" fill="#04262a"/></svg></span>
+              <div><b>Игорь Пантелеев</b><span>Коммерческая недвижимость · Казань</span></div>
+              <span class="stars"><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg><svg viewBox="0 0 24 24"><path d="m12 17.3-6.2 3.7 1.7-7L2 9.2l7.1-.6L12 2l2.9 6.6 7.1.6-5.5 4.8 1.7 7z"/></svg></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="slider-nav">
+        <button class="sbtn" id="prev" aria-label="Предыдущий отзыв"><svg viewBox="0 0 24 24"><path d="M11 5l-7 7 7 7v-5h9v-4h-9z"/></svg></button>
+        <div class="dots" id="dots"></div>
+        <button class="sbtn" id="next" aria-label="Следующий отзыв"><svg viewBox="0 0 24 24"><path d="M13 5l7 7-7 7v-5H4v-4h9z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FAQ ======= -->
+<section class="sec" id="faq">
+  <div class="container">
+    <div class="head center reveal">
+      <span class="eyebrow"><i></i> Вопросы и ответы</span>
+      <h2>Частые вопросы клиентов</h2>
+    </div>
+    <div class="faq reveal">
+      <div class="q">
+        <button class="q-head">Насколько безопасно покупать недвижимость на торгах?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Безопасно, если объект проверен. Мы проводим полный юридический аудит: история права, обременения, залоги, прописанные лица, долги по ЖКХ, риски оспаривания сделки и банкротства продавца. Дополнительно оформляем титульное страхование на 3 года. Если лот снимается с торгов — задаток возвращают в полном объёме.</p></div>
+      </div>
+      <div class="q">
+        <button class="q-head">Сколько стоят ваши услуги?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Сопровождение торгов — 3% от суммы выигрыша, но не менее 60 000 ₽. Покупка или продажа недвижимости — от 90 000 ₽ либо 2% от стоимости объекта. Строительство — по фиксированной смете в договоре. Консультация, подбор лотов и юридическая экспертиза перед сделкой — бесплатно.</p></div>
+      </div>
+      <div class="q">
+        <button class="q-head">Можно ли купить объект с торгов в ипотеку?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Да. Мы работаем с 14 банками-партнёрами, которые кредитуют покупку лотов на торгах. Обычно требуется первоначальный взнос от 20% и одобрение до подачи заявки на участие. Также возможны рассрочка от продавца и кредит под залог уже имеющейся недвижимости.</p></div>
+      </div>
+      <div class="q">
+        <button class="q-head">Как быстро вы продаёте квартиру?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Средний срок продажи квартиры в Москве и МО — 45 дней, коммерческой недвижимости — до 90 дней. Мы делаем профессиональную съёмку, 3D-тур, размещаем объект на 20+ площадках и в собственной базе из 12 400 покупателей. Если объект не продан за 60 дней — снижаем комиссию.</p></div>
+      </div>
+      <div class="q">
+        <button class="q-head">Работаете ли вы в других регионах России?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Да, торги и сделки с недвижимостью проводим по всей России — все площадки электронные, присутствие не требуется. Строительные работы выполняем в Москве, Московской, Тверской, Калужской и Владимирской областях, а также в Краснодарском крае.</p></div>
+      </div>
+      <div class="q">
+        <button class="q-head">Что входит в строительство дома «под ключ»?<span class="q-ico"><svg viewBox="0 0 24 24"><path d="M11 5h2v14h-2zm-6 6h14v2H5z"/></svg></span></button>
+        <div class="q-body"><p>Проект и разрешение на строительство, геодезия и фундамент, коробка и перекрытия, кровля, фасады, окна и двери, инженерные сети (электрика, отопление, вода, канализация), внутренняя отделка и благоустройство участка. Оплата поэтапная: 7 этапов с приёмкой каждого.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACTS ======= -->
+<section class="sec contact" id="contacts">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="eyebrow reveal"><i></i> Контакты</span>
+        <h2 class="reveal d1">Оставьте заявку — перезвоним за 15 минут</h2>
+        <p class="reveal d2">Расскажите о задаче: подберём лот на торгах, объект для покупки или рассчитаем стоимость строительства.</p>
+
+        <div class="cinfo reveal d2">
+          <div class="cinfo-item">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg></span>
+            <div><span>Телефон</span><b><a href="tel:+74951234567">+7 (495) 123-45-67</a></b></div>
+          </div>
+          <div class="cinfo-item">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg></span>
+            <div><span>E-mail</span><b><a href="mailto:info@rim-realty.ru">info@rim-realty.ru</a></b></div>
+          </div>
+          <div class="cinfo-item">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg></span>
+            <div><span>Офис</span><b>Москва, Пресненская наб., 12, башня «Восток», офис 4508</b></div>
+          </div>
+          <div class="cinfo-item">
+            <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></svg></span>
+            <div><span>Режим работы</span><b>Пн–Пт 09:00–20:00 · Сб 10:00–17:00</b></div>
+          </div>
+        </div>
+
+        <div class="socials reveal d3">
+          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 12.9l-4.8-1.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.7z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-5.7-4.6c-.4-.6-.8-1.4-.8-2.2s.4-1.2.6-1.5c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.2.3 0 .5.2.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.6-.1 1z"/></svg></a>
+          <a href="#" aria-label="VK"><svg viewBox="0 0 24 24"><path d="M12.8 17c-5.4 0-8.6-3.8-8.7-10h2.7c.1 4.6 2.2 6.5 3.8 6.9V7h2.6v3.9c1.6-.2 3.2-2 3.8-3.9h2.5c-.4 2.3-2.1 4.1-3.3 4.8 1.2.6 3.2 2.2 3.9 5.2h-2.8c-.6-1.9-2.1-3.4-4.1-3.6V17z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M22 8.2s-.2-1.5-.8-2.1c-.8-.8-1.7-.8-2.1-.9C16.5 5 12 5 12 5s-4.5 0-7.1.2c-.4 0-1.3.1-2.1.9-.6.6-.8 2.1-.8 2.1S1.8 10 1.8 11.7v1.6c0 1.8.2 3.5.2 3.5s.2 1.5.8 2.1c.8.8 1.8.8 2.3.9 1.7.1 6.9.2 6.9.2s4.5 0 7.1-.3c.4 0 1.3-.1 2.1-.9.6-.6.8-2.1.8-2.1s.2-1.7.2-3.5v-1.6c0-1.7-.2-3.4-.2-3.4zM9.9 15V9.4l5.5 2.8-5.5 2.8z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="form-card reveal d1">
+        <form id="contactForm" novalidate>
+          <h3>Заявка на консультацию</h3>
+          <p>Заполните форму — эксперт свяжется с вами и ответит на все вопросы.</p>
+
+          <div class="form-row">
+            <div class="fgroup" id="g-name">
+              <label for="c-name">Ваше имя <i>*</i></label>
+              <input type="text" id="c-name" name="name" placeholder="Иван Петров" autocomplete="name">
+              <span class="err-msg">Укажите имя (минимум 2 символа)</span>
+            </div>
+            <div class="fgroup" id="g-phone">
+              <label for="c-phone">Телефон <i>*</i></label>
+              <input type="tel" id="c-phone" name="phone" placeholder="+7 (___) ___-__-__" autocomplete="tel">
+              <span class="err-msg">Введите корректный номер телефона</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="fgroup" id="g-email">
+              <label for="c-email">E-mail</label>
+              <input type="email" id="c-email" name="email" placeholder="mail@example.ru" autocomplete="email">
+              <span class="err-msg">Проверьте формат e-mail</span>
+            </div>
+            <div class="fgroup" id="g-service">
+              <label for="c-service">Интересующая услуга <i>*</i></label>
+              <select id="c-service" name="service">
+                <option value="">Выберите услугу</option>
+                <option>Участие в торгах / подбор лота</option>
+                <option>Покупка недвижимости</option>
+                <option>Продажа недвижимости</option>
+                <option>Строительство дома</option>
+                <option>Проектирование и реконструкция</option>
+                <option>Коммерческая недвижимость</option>
+                <option>Другое</option>
+              </select>
+              <span class="err-msg">Выберите услугу из списка</span>
+            </div>
+          </div>
+
+          <div class="fgroup" id="g-message">
+            <label for="c-message">Сообщение</label>
+            <textarea id="c-message" name="message" placeholder="Опишите задачу: регион, бюджет, сроки…"></textarea>
+          </div>
+
+          <label class="consent" id="g-consent">
+            <input type="checkbox" id="c-agree" name="agree">
+            <span>Я согласен на обработку персональных данных и принимаю условия политики конфиденциальности.</span>
+          </label>
+
+          <button type="submit" class="btn btn-primary" id="submitBtn">Отправить заявку
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M2 21l21-9L2 3v7l15 2-15 2z"/></svg>
+          </button>
+          <p class="form-note">Отвечаем в течение 15 минут в рабочее время · Без спама</p>
+        </form>
+
+        <div class="success" id="success">
+          <div class="ok"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg></div>
+          <h3>Заявка отправлена!</h3>
+          <p>Спасибо за обращение в агентство «РИМ». Наш эксперт свяжется с вами в ближайшее время по указанному номеру телефона.</p>
+          <button class="btn btn-ghost" id="resetForm">Отправить ещё одну заявку</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <a href="#top" class="logo">
+          <svg class="logo-mark" viewBox="0 0 2020 1936" xmlns="http://www.w3.org/2000/svg"><path fill="#16a9af" d="M506.811 81.475c76.422-1.24 156.614-.034 233.278-.066l521.191.224 231.36-.064 68.26-.062c26.33-.013 50.29-.33 76.22 4.147 81.98 14.152 155.66 58.163 200.11 129.622 30.52 49.065 43.39 100.578 43.65 158.221.42 94.631.18 189.212.16 283.824l.08 525.269.06 240.86c.04 43.64 2.16 108.18-4.37 149.3-8.06 50.72-40.35 112.15-75.96 148.41-42.52 43.3-99.24 75.12-159.74 84.14-19.59 2.92-36.69 3.37-56.42 3.61l-787.767.09H592.411c-47.586.06-107.415 1.98-153.475-5.76-51.727-8.69-109.5-41.79-146.698-77.99-58.228-56.65-85.038-132.44-84.985-212.79.024-35.13-.23-70.85-.244-106.17l-.017-194.51-.12-513.974.043-234.996c.03-41.335-1.94-110.338 4.94-149.277a277.7 277.7 0 0 1 71.843-141.472c44.018-45.578 109.041-78.36 171.56-87.4 18.079-2.614 33.404-2.852 51.553-3.186"/><path fill="#fefefe" d="m852 325-2 849h110v11H850l.06 48.16 427.496-.43-.09-54-66.21.8L1210 604l-129.723-1.252c-16.12.768-53.53-21.938-61.93-43.786L1017 1185h-43l-.032-674.397 137.839 78.367-1.19-118.114A5545 5545 0 0 0 852 325m219.34 356.476c22.6 12.364 48.78 27.604 71.67 38.247.98 18.633.19 39.881.08 58.729l-.17 93.514.1 227.614c.01 10.16 1.08 80.08-.73 85.18-3.28 2.11-5.9 1.42-10.32 1.52-.96-17.63-.1-40.1-.02-58.05l-.06-92.13.11-306.35c-.04-3.973.57-2.324-1.26-5.314-4.26-2.394-9.9-2.275-14.98-2.683.71 50.662.18 102.501.22 153.267l-.07 311.37q-22.41.405-44.82-.3l-.38-327.511c.06-55.609-1.78-122.41.63-177.103m276.09 801.564c17.4-27.69 32.66-57.02 49.72-84.86 5.75-9.38 29.56-53.17 38.1-54.98 6.23-1.32 41.71-.34 50.97-.24 2.19 81.07-.27 165.27.65 246.85-18.69.22-37.38.28-56.06.18l-.65-68.61c.29-27.6.29-55.21.02-82.82-10.6 12.48-22.14 35.09-30.44 49.94-12.68 22.68-25.72 45.96-37.04 69.31-9.59.4-19.17.84-28.75 1.34-5.1-15.15-26.97-52.28-35.23-67.23-8.04-14.56-20.78-37.94-30.04-51.43-1.05 17.39-.28 41.32-.14 59.16l.32 90.15-54.4-.14c-1.28-36.07-.27-78.22-.14-114.69l-.13-132.82c16.59.79 33.36-.04 50.78.91 12.53 14.54 28.13 42.95 38.39 60.15 15.67 26.28 32.2 51.65 44.07 79.83m-457.248-139.99c18.67-.13 35.403-.65 54.224.02 1.549 49.32.482 103 .653 152.71 14.503-14.52 25.987-33.71 38.266-50.42l74.845-102.5c16.78-.18 33.96.05 50.78.08l-.05 165.56c0 24.97.09 50.17-.17 75.14-.04 4.13.35 4.18-1.84 6.19l-53.87-.06-1.02-153.4c-13.93 10.84-47.72 61.78-59.636 78.88l-52.393 74.28c-12.944.81-35.319-.13-48.962-.27-2.64-80.79 1.037-164.81-.827-246.21m-267.602-.58c29.847-.01 94.515-2.1 120.766 5.95a78 78 0 0 1 30.064 17.3c40.439 37.4 33.794 110.41-15.826 137.23-19.07 10.31-36.994 10.52-58.188 11.11q-22.246.18-44.493.03l.219 74.94c-18.805.35-37.611.61-56.419.77-.483-82.29-.485-164.58-.004-246.88z"/><path fill="#16a9af" d="M654.802 1393.44c19.207-.51 41.966-1.78 60.85.32 32.544 3.61 35.57 41.34 18.006 62.65-16.661 14.17-56.193 9.58-78.736 9.21-.539-23.46-.076-48.56-.12-72.18"/></svg>
+          <span class="logo-text"><b>РИМ</b><small>недвижимость</small></span>
+        </a>
+        <p class="foot-about">Агентство недвижимости полного цикла: участие в торгах, купля-продажа и строительство. Работаем по всей России с 2009 года.</p>
+        <div class="socials">
+          <a href="#" aria-label="Telegram"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19c-.2 1-.9 1.3-1.8.8l-4.9-3.6-2.4 2.3c-.3.3-.5.5-1 .5l.4-5 9.1-8.2c.4-.4-.1-.6-.6-.2L6.2 12.9l-4.8-1.5c-1-.3-1-1 .2-1.5l19-7.3c.9-.3 1.6.2 1.3 1.7z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.4 14c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-1.7-.1a12 12 0 0 1-5.7-4.6c-.4-.6-.8-1.4-.8-2.2s.4-1.2.6-1.5c.2-.2.4-.3.6-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.4 0 .6l-.4.6-.3.3c-.1.1-.2.3 0 .5.2.3.7 1.1 1.5 1.8 1 .9 1.8 1.2 2.1 1.3.2.1.4.1.5-.1l.7-.8c.2-.2.3-.2.5-.1l2 .9c.2.1.4.2.4.3.1.2.1.6-.1 1z"/></svg></a>
+          <a href="#" aria-label="VK"><svg viewBox="0 0 24 24"><path d="M12.8 17c-5.4 0-8.6-3.8-8.7-10h2.7c.1 4.6 2.2 6.5 3.8 6.9V7h2.6v3.9c1.6-.2 3.2-2 3.8-3.9h2.5c-.4 2.3-2.1 4.1-3.3 4.8 1.2.6 3.2 2.2 3.9 5.2h-2.8c-.6-1.9-2.1-3.4-4.1-3.6V17z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="foot-col">
+        <h4>Услуги</h4>
+        <ul>
+          <li><a href="#auction">Участие в торгах</a></li>
+          <li><a href="#auction">Торги по банкротству</a></li>
+          <li><a href="#services">Покупка недвижимости</a></li>
+          <li><a href="#services">Продажа недвижимости</a></li>
+          <li><a href="#construction">Строительство домов</a></li>
+          <li><a href="#construction">Проектирование</a></li>
+          <li><a href="#services">Ипотека и рассрочка</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Компания</h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#catalog">Объекты</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#faq">Вопросы и ответы</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+          <li><a href="#">Вакансии</a></li>
+        </ul>
+      </div>
+
+      <div class="foot-col">
+        <h4>Контакты</h4>
+        <ul class="foot-contact">
+          <li><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.6 15.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.2.4 2.4.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z"/></svg> <a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+          <li><svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg> <a href="mailto:info@rim-realty.ru">info@rim-realty.ru</a></li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2C8.1 2 5 5.1 5 9c0 5.2 7 13 7 13s7-7.8 7-13c0-3.9-3.1-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg> Москва, Пресненская наб., 12, офис 4508</li>
+          <li><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7z"/></svg> Пн–Пт 09:00–20:00, Сб 10:00–17:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2009–2026 Агентство недвижимости «РИМ». Все права защищены.</span>
+      <span><a href="#">Политика конфиденциальности</a> · <a href="#">Согласие на обработку данных</a></span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Наверх"><svg viewBox="0 0 24 24"><path d="M12 4 4 12h5v8h6v-8h5z"/></svg></button>
+
+<div class="toast" id="toast"><svg viewBox="0 0 24 24"><path d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4z"/></svg><span id="toastText">Готово</span></div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* ---------- header / burger ---------- */
+  var header=document.getElementById('header'),
+      burger=document.getElementById('burger'),
+      menu=document.getElementById('menu'),
+      totop=document.getElementById('totop');
+
+  burger.addEventListener('click',function(){
+    burger.classList.toggle('open');
+    menu.classList.toggle('open');
+  });
+  menu.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      burger.classList.remove('open');
+      menu.classList.remove('open');
+    });
+  });
+
+  function onScroll(){
+    var y=window.scrollY||window.pageYOffset;
+    header.classList.toggle('scrolled',y>20);
+    totop.classList.toggle('show',y>600);
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+  totop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  /* ---------- reveal ---------- */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+    });
+  },{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+
+  /* ---------- counters ---------- */
+  function animateCount(el){
+    var target=parseInt(el.getAttribute('data-count'),10)||0,
+        suffix=el.getAttribute('data-suffix')||'',
+        dur=1500,start=null;
+    function tick(ts){
+      if(!start)start=ts;
+      var p=Math.min((ts-start)/dur,1),
+          eased=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(eased*target).toLocaleString('ru-RU')+suffix;
+      if(p<1)requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  var cio=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){animateCount(e.target);cio.unobserve(e.target);}
+    });
+  },{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+
+  /* ---------- active nav link ---------- */
+  var sections=['services','auction','catalog','construction','about','reviews','contacts'];
+  var links={};
+  menu.querySelectorAll('a').forEach(function(a){
+    var id=a.getAttribute('href').replace('#','');
+    links[id]=a;
+  });
+  var sio=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        Object.keys(links).forEach(function(k){links[k].classList.remove('active');});
+        if(links[e.target.id])links[e.target.id].classList.add('active');
+      }
+    });
+  },{threshold:.25,rootMargin:'-80px 0px -55% 0px'});
+  sections.forEach(function(id){var s=document.getElementById(id);if(s)sio.observe(s);});
+
+  /* ---------- toast ---------- */
+  var toast=document.getElementById('toast'),toastText=document.getElementById('toastText'),toastTimer;
+  function showToast(msg){
+    toastText.textContent=msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer=setTimeout(function(){toast.classList.remove('show');},3200);
+  }
+
+  /* ---------- search widget -> catalog filter ---------- */
+  var chips=document.querySelectorAll('#filters .chip');
+  function applyFilter(value){
+    chips.forEach(function(c){c.classList.toggle('active',c.getAttribute('data-filter')===value);});
+    document.querySelectorAll('#catalogGrid .card').forEach(function(card){
+      var cats=card.getAttribute('data-cat').split(' ');
+      var show=(value==='all')||cats.indexOf(value)>-1;
+      card.classList.toggle('hide',!show);
+    });
+  }
+  chips.forEach(function(c){
+    c.addEventListener('click',function(){applyFilter(c.getAttribute('data-filter'));});
+  });
+
+  document.getElementById('searchForm').addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var type=document.getElementById('s-type').value;
+    applyFilter(type);
+    document.getElementById('catalog').scrollIntoView({behavior:'smooth'});
+    var found=document.querySelectorAll('#catalogGrid .card:not(.hide)').length;
+    showToast('Найдено объектов: '+found);
+  });
+
+  /* ---------- card buttons ---------- */
+  function askAbout(text){
+    var msg=document.getElementById('c-message'),
+        svc=document.getElementById('c-service');
+    msg.value=(msg.value?msg.value+'\n':'')+'Интересует объект: '+text;
+    if(text.toLowerCase().indexOf('торг')>-1||text.toLowerCase().indexOf('лот')>-1){
+      svc.value=svc.options[1].text;
+    }
+    document.getElementById('contacts').scrollIntoView({behavior:'smooth'});
+    setTimeout(function(){msg.focus();},700);
+    showToast('Объект добавлен в заявку');
+  }
+  document.querySelectorAll('.js-ask').forEach(function(b){
+    b.addEventListener('click',function(){askAbout(b.getAttribute('data-object'));});
+  });
+  document.querySelectorAll('.js-build').forEach(function(b){
+    b.addEventListener('click',function(){
+      var svc=document.getElementById('c-service');
+      svc.value='Строительство дома';
+      document.getElementById('c-message').value='Хочу рассчитать стоимость строительства дома на участке.';
+      document.getElementById('construction').scrollIntoView({behavior:'smooth'});
+      showToast('Перешли к услугам строительства');
+    });
+  });
+
+  /* ---------- reviews slider ---------- */
+  var track=document.getElementById('track'),
+      slides=track.children.length,
+      dotsBox=document.getElementById('dots'),
+      idx=0,auto;
+  for(var i=0;i<slides;i++){
+    var d=document.createElement('button');
+    d.className='dot'+(i===0?' active':'');
+    d.setAttribute('aria-label','Отзыв '+(i+1));
+    (function(n){d.addEventListener('click',function(){go(n);restart();});})(i);
+    dotsBox.appendChild(d);
+  }
+  var dots=dotsBox.children;
+  function go(n){
+    idx=(n+slides)%slides;
+    track.style.transform='translateX(-'+(idx*100)+'%)';
+    for(var k=0;k<slides;k++)dots[k].classList.toggle('active',k===idx);
+  }
+  function restart(){clearInterval(auto);auto=setInterval(function(){go(idx+1);},6500);}
+  document.getElementById('next').addEventListener('click',function(){go(idx+1);restart();});
+  document.getElementById('prev').addEventListener('click',function(){go(idx-1);restart();});
+  restart();
+
+  /* touch swipe */
+  var startX=null;
+  track.addEventListener('touchstart',function(e){startX=e.touches[0].clientX;},{passive:true});
+  track.addEventListener('touchend',function(e){
+    if(startX===null)return;
+    var dx=e.changedTouches[0].clientX-startX;
+    if(Math.abs(dx)>50){go(idx+(dx<0?1:-1));restart();}
+    startX=null;
+  },{passive:true});
+
+  /* ---------- faq ---------- */
+  document.querySelectorAll('.q').forEach(function(q){
+    var head=q.querySelector('.q-head'),body=q.querySelector('.q-body');
+    head.addEventListener('click',function(){
+      var open=q.classList.contains('open');
+      document.querySelectorAll('.q.open').forEach(function(o){
+        o.classList.remove('open');
+        o.querySelector('.q-body').style.maxHeight=null;
+      });
+      if(!open){
+        q.classList.add('open');
+        body.style.maxHeight=body.scrollHeight+'px';
+      }
+    });
+  });
+
+  /* ---------- phone mask ---------- */
+  var phone=document.getElementById('c-phone');
+  phone.addEventListener('input',function(){
+    var v=phone.value.replace(/\D/g,'');
+    if(v.charAt(0)==='8')v='7'+v.slice(1);
+    if(v.charAt(0)!=='7')v='7'+v;
+    v=v.slice(0,11);
+    var out='+7';
+    if(v.length>1)out+=' ('+v.slice(1,4);
+    if(v.length>=5)out+=') '+v.slice(4,7);
+    if(v.length>=8)out+='-'+v.slice(7,9);
+    if(v.length>=10)out+='-'+v.slice(9,11);
+    phone.value=out;
+  });
+
+  /* ---------- form validation ---------- */
+  var form=document.getElementById('contactForm'),
+      success=document.getElementById('success'),
+      submitBtn=document.getElementById('submitBtn'),
+      consent=document.getElementById('g-consent');
+
+  function setErr(groupId,on){
+    var g=document.getElementById(groupId);
+    if(g)g.classList.toggle('err',on);
+  }
+
+  ['c-name','c-phone','c-email','c-service'].forEach(function(id){
+    var el=document.getElementById(id);
+    el.addEventListener('input',function(){
+      var g=el.closest('.fgroup');
+      if(g)g.classList.remove('err');
+    });
+  });
+  document.getElementById('c-agree').addEventListener('change',function(){consent.classList.remove('err');});
+
+  form.addEventListener('submit',function(ev){
+    ev.preventDefault();
+    var ok=true,
+        name=document.getElementById('c-name').value.trim(),
+        tel=phone.value.replace(/\D/g,''),
+        mail=document.getElementById('c-email').value.trim(),
+        service=document.getElementById('c-service').value,
+        agree=document.getElementById('c-agree').checked;
+
+    if(name.length<2){setErr('g-name',true);ok=false;}else setErr('g-name',false);
+    if(tel.length<11){setErr('g-phone',true);ok=false;}else setErr('g-phone',false);
+    if(mail && !/^[^\s@]+@[^\s@]+\.[a-zA-Zа-яА-Я]{2,}$/.test(mail)){setErr('g-email',true);ok=false;}else setErr('g-email',false);
+    if(!service){setErr('g-service',true);ok=false;}else setErr('g-service',false);
+    if(!agree){consent.classList.add('err');ok=false;}else consent.classList.remove('err');
+
+    if(!ok){
+      showToast('Проверьте выделенные поля формы');
+      var firstErr=form.querySelector('.fgroup.err input,.fgroup.err select,.err input');
+      if(firstErr)firstErr.focus();
+      return;
+    }
+
+    submitBtn.disabled=true;
+    submitBtn.innerHTML='Отправляем…';
+    setTimeout(function(){
+      form.style.display='none';
+      success.classList.add('show');
+      submitBtn.disabled=false;
+      submitBtn.innerHTML='Отправить заявку';
+      showToast('Заявка успешно отправлена');
+    },1200);
+  });
+
+  document.getElementById('resetForm').addEventListener('click',function(){
+    form.reset();
+    success.classList.remove('show');
+    form.style.display='block';
+    document.querySelectorAll('.fgroup.err').forEach(function(g){g.classList.remove('err');});
+    consent.classList.remove('err');
+  });
+})();
+</script>
+</body>
+</html>
